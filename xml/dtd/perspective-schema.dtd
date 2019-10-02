@@ -1,0 +1,315 @@
+<!-- ...................................................................... -->
+<!-- perspective XML DTD V2.6.0 ........................................... -->
+<!-- File perspective-schema.dtd .......................................... -->
+
+<!-- Copyright © 2003, 2005, 2007, 2016, 2017, 2018 Christopher Tipper
+A DTD for a reduced markup language, and simple blog
+
+  Namespace "http://www.e-conomist.me.uk/xml/dtd/perspective-schema.dtd"
+  PUBLIC    "-//CTIPPER//DTD perspective XML V2.1//EN" 
+
+-->
+
+<!-- ...................................................................... -->
+
+<!-- %inline;
+An inline element. 
+-->
+
+<!ENTITY % inline "#PCDATA | i | b | u | tt | sup | sub | sq | q | apos">
+
+<!-- %itags;
+itags are inline elements that are used in a different context. 
+-->
+
+<!ENTITY % itags "cite | a">
+
+<!-- ...................................................................... -->
+
+<!-- document is the top-level element  -->
+
+<!ELEMENT document (info, body , bibliography?)>
+
+<!-- info holds meta-information -->
+
+<!ELEMENT info (title, subtitle, author, date?, copyright?, keywords?, revhistory?, introduction?)>
+
+<!-- body holds the content  -->
+
+<!ELEMENT body          (blog | section | p+ | enumerate | itemize | sub-heading | center | blockquote | table | hr | a | img | byline | pre | epigraph)*>
+
+<!-- section separates content -->
+
+<!ELEMENT section       (title, (p+ | enumerate | itemize | sub-heading | center | blockquote | table | hr | a | img | byline | pre | epigraph)*)>
+<!ATTLIST section 
+          id            CDATA                       #IMPLIED
+>
+
+<!-- blog constructs -->
+
+<!ELEMENT blog         (bloginfo, (p+ | enumerate | itemize | sub-heading | center | blockquote | table | hr | a | img | byline | pre | epigraph)*)> 
+<!ATTLIST blog 
+          id            CDATA                       #REQUIRED
+>
+
+<!ELEMENT bloginfo      (title, date, keywords?)>
+
+<!-- meta information is contained in the following tags -->
+
+<!ELEMENT title         (%inline;)*>
+
+<!ELEMENT subtitle      (%inline;)*>
+
+<!ELEMENT author        (#PCDATA)>
+
+<!ELEMENT date          (#PCDATA)>
+
+<!ELEMENT copyright     (owner, year)>
+
+<!ELEMENT owner         (#PCDATA)>
+
+<!ELEMENT year          (#PCDATA)>
+
+<!ELEMENT keywords      (#PCDATA)>
+
+<!ELEMENT revhistory    (revision)+>
+
+<!ELEMENT revision      (revnumber, revdate, revremark)>
+
+<!ELEMENT revdate       (#PCDATA)>
+
+<!ELEMENT revnumber     (#PCDATA)>
+
+<!ELEMENT revremark     (%inline; | a)*>
+
+<!ELEMENT introduction  (p)+>
+
+<!-- ...................................................................... -->
+
+<!-- inline element declarations -->
+
+<!ELEMENT sq            (%inline; | %itags;)*>
+
+<!ELEMENT q             (%inline; | %itags;)*>
+
+<!ELEMENT sup           (#PCDATA)>
+
+<!ELEMENT sub           (#PCDATA)>
+
+<!ELEMENT cite          (#PCDATA)>
+
+<!ELEMENT b             (%inline; | %itags;)*>
+
+<!ELEMENT u             (%inline; | %itags;)*>
+
+<!ELEMENT i             (%inline; | %itags;)*>
+
+<!ELEMENT tt            (%inline; | %itags;)*>
+
+<!ELEMENT footnote      (%inline; | %itags; | p)*>
+
+<!ELEMENT byline        (%inline; | %itags;)*>
+
+<!ELEMENT a             (%inline;)*>
+<!ATTLIST a 
+          href          CDATA           "#" 
+          name          CDATA           #IMPLIED
+          title         CDATA           #IMPLIED
+          type          CDATA           #IMPLIED
+          property      CDATA           #IMPLIED
+>
+          
+<!ELEMENT hr            EMPTY>
+
+<!ELEMENT stop          EMPTY>
+
+<!ELEMENT apos          EMPTY>
+
+<!ELEMENT annotation    (title, p+)>
+
+<!-- ...................................................................... -->
+
+<!-- block element declarations -->
+
+<!ELEMENT p             (%inline; | %itags; | img | footnote | annotation | stop)*>
+<!ATTLIST p 
+          align         (left | right | center)     #IMPLIED
+          class         CDATA                       #IMPLIED
+>
+          
+<!ELEMENT pre           (%inline; | %itags; | footnote)*>
+
+<!ELEMENT center        (%inline; | %itags; | img | footnote | stop)*>
+<!ATTLIST center 
+          class         CDATA                       #IMPLIED
+>
+          
+<!ELEMENT blockquote    (p)+>
+
+<!ELEMENT epigraph      (p)+>
+
+<!ELEMENT sub-heading   (%inline; | %itags;)*>
+
+<!ELEMENT enumerate     (item)+>
+<!ATTLIST enumerate
+          style         (1 | a | A | i | I)         #IMPLIED
+>
+
+<!ELEMENT itemize       (item)+>
+
+<!ELEMENT item          (p)+>
+
+<!-- ...................................................................... -->
+
+<!-- image inclusion 
+     * dimensions are pixels, with implied resolution of 96dpi
+     * src attribute represents image name _without_ file extension
+     * alt is a required attribute
+     * align default is 'center'
+     * space attribute is padding in pixels around image
+     * pdfres attribute represents pdf resolution in dpi
+     * float set to 'yes' for floating image in pdf output
+-->
+
+<!ELEMENT img (caption)*>
+<!ATTLIST img 
+          src           CDATA                           #REQUIRED
+          width         CDATA                           #REQUIRED
+          height        CDATA                           #REQUIRED
+          alt           CDATA                           #REQUIRED
+          align         (left | right | center)         #IMPLIED
+          space         CDATA                           #IMPLIED
+          border        CDATA                           #IMPLIED
+          format        (jpg | gif | png | svg | pdf)   #REQUIRED
+          pdfres        CDATA                           #IMPLIED
+          float         CDATA                           #IMPLIED
+>
+          
+<!ELEMENT caption       (%inline; | %itags;)*>
+<!ATTLIST caption 
+          figure        (yes | no)                      #IMPLIED
+>
+          
+<!-- ...................................................................... -->
+
+<!-- reduced bibliography markup 
+We do not need the more elaborate schemes elsewhere 
+as we are only dealing with books and journals.
+-->
+
+<!ELEMENT bibliography (bibitem)*>
+
+<!ELEMENT bibitem       (author | editor | title | month | year | journal | publisher | edition | note)+>
+<!ATTLIST bibitem 
+          type          (article | book)                #REQUIRED
+          label         CDATA                           #REQUIRED
+>
+
+<!ELEMENT editor        (#PCDATA)>
+
+<!ELEMENT journal       (#PCDATA | a)*>
+
+<!ELEMENT publisher     (#PCDATA)>
+
+<!ELEMENT month         (#PCDATA)>
+
+<!ELEMENT edition       (#PCDATA)>
+
+<!ELEMENT note          (%inline; | %itags;)*>
+
+<!-- ...................................................................... -->
+
+<!-- table markup
+Allows simplified tables compatible with HTML table model
+-->
+
+<!ELEMENT table         (label?, tgroup+)>
+<!ATTLIST table 
+          align         (left | right | center)     #IMPLIED
+>
+
+<!ELEMENT label         (%inline; | %itags;)*>
+<!ATTLIST label
+          number        (yes | no)                  #IMPLIED
+>
+
+<!ELEMENT tgroup        (columns+, thead?, tfoot?, tbody)>
+<!ATTLIST tgroup 
+          cols          CDATA                       #REQUIRED
+>
+          
+<!ELEMENT columns       EMPTY>
+<!ATTLIST columns 
+          number        CDATA                       #REQUIRED
+          width         CDATA                       #IMPLIED
+          align         (left | right | center)     #IMPLIED
+>
+          
+<!ELEMENT thead         (row)*>
+          
+<!ELEMENT tfoot         (row)*>
+
+<!ELEMENT tbody         (row)*>
+
+<!ELEMENT row           (column)*>
+<!ATTLIST row 
+          valign        (top | middle | bottom)     #IMPLIED
+>
+          
+<!ELEMENT column        (%inline; | %itags; | p | footnote | annotation)*>
+<!ATTLIST column 
+          align         (left | center | right)     #IMPLIED
+          span          CDATA                       #IMPLIED
+          class         CDATA                       #IMPLIED
+>
+          
+<!-- ...................................................................... -->
+
+<!-- ISO character entities -->
+
+<!ENTITY % ISOlat1.module "INCLUDE">
+<![%ISOlat1.module;[
+<!ENTITY % ISOlat1 PUBLIC
+"ISO 8879:1986//ENTITIES Added Latin 1//EN//XML"
+"entities/iso-lat1.ent">
+<!--end of ISOlat1.module-->]]>
+
+<!ENTITY % ISOnum.module "INCLUDE">
+<![%ISOnum.module;[
+<!ENTITY % ISOnum PUBLIC
+"ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN//XML"
+"entities/iso-num.ent">
+<!--end of ISOnum.module-->]]>
+
+<!ENTITY % ISOpub.module "INCLUDE">
+<![%ISOpub.module;[
+<!ENTITY % ISOpub PUBLIC
+"ISO 8879:1986//ENTITIES Publishing//EN//XML"
+"entities/iso-pub.ent">
+<!--end of ISOpub.module-->]]>
+
+<!ENTITY % ISOmisc.module "INCLUDE">
+<![%ISOmisc.module;[
+<!ENTITY % ISOmisc PUBLIC
+"ISO 8879:1986//ENTITIES Miscellaneous//EN//XML"
+"entities/iso-misc.ent">
+<!--end of ISOmisc.module-->]]>
+
+<![ %ISOlat1.module; [
+%ISOlat1;
+]]>
+
+<![ %ISOnum.module; [
+%ISOnum;
+]]>
+
+<![ %ISOpub.module; [
+%ISOpub;
+]]>
+
+<![ %ISOmisc.module; [
+%ISOmisc;
+]]> 
+
+<!-- ..................................................................... -->
+<!-- End of perspective-schema dtd -->

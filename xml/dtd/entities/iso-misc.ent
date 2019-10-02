@@ -1,0 +1,9 @@
+<!ENTITY euro "&#x20AC;">
+<!ENTITY mdash "&#151;">
+<!ENTITY ndash "&#x2013;">
+<!ENTITY percnt "&#037;">
+<!ENTITY dollar "$">
+<!ENTITY DoubleRightArrow "&#222;">
+<!ENTITY DoubleLeftArrow "&#220;">
+<!ENTITY DoubleLeftRightArrow "&#219;">
+<!ENTITY And "&#199;">

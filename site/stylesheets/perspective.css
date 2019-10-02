@@ -1,0 +1,366 @@
+a, abbr, acronym, address, applet, article, aside, audio, b, blockquote, big, body, center, canvas, caption, cite, code, command,
+datalist, dd, del, details, dfn, dl, div, dt, em, embed, fieldset, figcaption, figure, font, footer, form, 
+h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, keygen, label, legend, li, meter, nav,
+object, ol, output, p, pre, progress, q, s, samp, section, medium, span, source, strike, strong, sub, sup,
+table, tbody, tfoot, thead, th, tr, td, video, tt, u, ul, var {
+  background: transparent;
+  border: 0 none;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+:root {
+  --gray-300: #e9ecef;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #868e96;
+  --gray-700: #495057;
+  --font-family-serif: Georgia, Times, serif;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 1rem !important;
+  font-weight: 400;
+  line-height: 1.414;
+  color: #000;
+  text-align: left;
+  background-color: #fff;
+  margin: 0 auto;
+  width: 95%;
+}
+
+p, ul, ol {
+  margin-top: .4em;
+  margin-bottom: .8em;
+}
+
+td, th {
+  padding: 6px 4px;
+}
+
+ul, ol {
+  margin-left: 2em;
+}
+
+li p, pre, h1, h2, h3, h4 {
+  margin-top: 3pt;
+  margin-bottom: 3pt;
+}
+
+div {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+blockquote {
+  font-size: 1.05rem;
+  border-left: 6px solid var(--gray-600);
+  padding-left: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+div.epigraph {
+  font-style: italic;
+  margin-top: 3pt;
+  margin-bottom: 3pt;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+ol {
+  color: black;
+  list-style-type: decimal;
+}
+
+ul {
+  color: var(--gray-700);
+  list-style-type: disc;
+}
+
+ul p {
+  color: black;
+}
+
+hr {
+  border-top-color: var(--gray-500);
+  border-width: 1px 0px 0px 0px;
+  border-top-style: solid;
+  border-collapse: collapse;
+  height: 0px;
+}
+
+hr.dashed {
+  border-top-color: var(--gray-500);
+  border-width: 1px 0px 0px 0px;
+  border-top-style: dotted;
+  border-collapse: collapse;
+  height: 0px;
+}
+
+sup {
+  font-size: x-small;
+  vertical-align: super;
+  line-height: 100%;
+}
+
+sub {
+  font-size: x-small;
+  vertical-align: sub;
+  line-height: 100%;
+}
+
+.lightText, .lightItalic, .text-muted {  
+  color: var(--gray-600); 
+}
+
+.bodyTextItalic, .lightItalic { 
+  font-style: italic; 
+}
+
+.blockText, .blockItalic, .blockLabel, .blockx, .blockxx {
+  font-family: var(--font-family-sans-serif);
+}
+
+.blockItalic {
+  font-style: italic;
+}
+
+.blockx {
+  font-size: 0.9rem;
+}
+
+.blockxx {
+  font-size: 0.8rem;
+}
+
+code {
+  font-family: var(--font-family-monospace);
+}
+
+.symbol {
+  font-family: Symbol, fantasy;
+}
+
+h1, h2, h3, h4, .Notice, .date, .byline {  
+  margin-bottom: 0.5rem;
+  font-family: var(--font-family-serif);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1, h2, h3, h4 {
+  color: black;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+.Notice, .lead {
+  font-size: 1.414rem;
+}
+
+.date {  
+  font-weight: bold;
+}
+
+.byline {  
+  font-style: italic;
+}
+
+.caption {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: black;
+  text-align: justify;
+}
+
+.abstract {
+  margin-left: 15%; 
+  margin-right: 15%;
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  padding: 7pt 0.5em 3pt 0.5em;
+  border: 1px solid var(--gray-500);
+  border-radius: 5px / 5px;
+}
+
+.tbody { 
+  border-top: 1px solid black; 
+  border-bottom: 1px solid black; 
+}
+
+.theader {
+  border-top: 1px solid black; 
+  border-bottom: 1px solid black; 
+}
+
+.revision { 
+  border-top: 1px; 
+  border-top-style: solid;
+  border-top-color: black; 
+}
+
+.table  {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.thead {
+  font-weight: bold;
+  color: black;
+  background-color: var(--gray-400);
+}
+
+.tfoot {
+  color: black;
+  background-color: white;
+}
+
+.odd, .even {
+  padding: 2px;
+}
+
+.odd {
+  background-color: var(--gray-300);
+}
+
+.even {
+  background-color: white;
+}
+
+.tabular {
+  border-width: 0px;
+  padding: 3px;
+  margin: 15px;
+  border-collapse: collapse;
+}
+
+.tabularBodyText, .tabularHeadText {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: black;
+}
+
+.tabularBodyText, .tabularHeadText {
+  border-bottom: 1px solid var(--gray-300);
+}
+
+.tabularHeadText {
+  border-top: 1px solid var(gray-600);
+}
+
+.tabularhead {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  background-color: var(--gray-400);
+}
+
+a[rel="bookmark"], a[rel="bookmark"]:visited, 
+a[rel="bookmark"]:link, a[rel="bookmark"]:active, a[rel="bookmark"]:hover {
+  color: black;
+}
+
+a[rel="bookmark"]:hover {
+  text-decoration: none;
+}
+
+a, a:link, a:visited, a:active, 
+a.navig, a.navig:link, a.navig:visited, a.navig:active, 
+a.link, a.link:link, a.link:visited, a.link:active {
+  text-decoration: none;
+}
+
+a, a:link, a:active, a:hover {
+  color: #4860e0;
+}
+
+a:visited {
+  color: #3C6D8A;
+}
+
+a.link, a.link:link, a.link:visited, a.link:active, a.link:hover {
+  color: black;
+}
+
+a.link:hover, a:hover {
+  text-decoration: underline;
+}
+
+a.h2, a.h2:link, a.h2:visited, a.h2:active, a.h2:hover {
+  color: #196287;
+  font-family: --var(--font-family-sans-serif);
+  font-size: small;
+  font-weight: bold;
+  line-height: 2.7ex;
+}
+
+a.h2:visited {
+  color: #4887AB;
+}
+
+#rss a, #rss a:link, #rss a:visited, #rss a:active, #rss a:hover {
+  color: white; 
+  font-family: --var(--font-family-sans-serif);
+  font-size: small;
+  font-weight: bold;
+  line-height: 2.7ex;
+}
+
+#rss a:visited {
+  color: var(--gray-300);
+}
+
+.dropCap {
+  font-size: 270%;
+  line-height: 100%;
+  text-align: center;
+  background-color: transparent;
+  border-color: white;
+  border-style: solid;
+  border-width: 0 0 5px;
+  margin: 0 5px 0 0;
+}
+
+pre {
+  font-family: var(--font-family-monospace);
+  font-size: 0.9em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+  padding: 0.5em;
+  white-space: pre;
+  background-color: var(--gray-300);
+  border-radius: 2px / 2px;
+}
+
+a[title^='Back'] { 
+  background-image: url('../images/buttons/arrowup.gif');
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+}
+
+div[align^='center'] {
+  margin: 0 auto;
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document PUBLIC "-//CTIPPER//DTD perspective XML V2.1//EN" "dtd/perspective-schema.dtd">
+<document>
+   <info>
+      <title>Perspective XSLT stylesheets</title>
+      <subtitle>A solution for publishing to print and web</subtitle>
+      <author>Christopher Tipper</author>
+      <date>Saturday, 12th March 2005</date>
+      <copyright>
+         <owner>Christopher Tipper</owner>
+         <year>2005</year>
+      </copyright>
+      <keywords>stylesheets, xsl, XSLT, html, docbook, tcl/tk, apache FOP</keywords>
+   </info>
+   <body>
+      <img src="tx-1" format="jpg" width="466" height="206" alt="A Tcl GUI to produce the transformation to HTML and print" align="center" space="10" border="0" pdfres="200">
+         <caption>Tx.tcl greatly expedites the transformation of the output to XHTML and 
+      Print.</caption></img>
+      <p><q>Perspective</q> is a macro and stylesheet distribution that allows you to 
+      publish structured documents to web and print. The stylesheets in this distribution
+      allow the creation and transformation of XML to HTML, PDF (using Formatting-Objects via XSLT) and 
+      DocBook, a widely used XML standard. This page and the accompanying PDF were 
+      produced using this software.</p>
+      <p>The importance of semantic markup is that you will have a clear
+      separation between style and content, the same content being used to generate
+      layouts in many media. Other solutions based on Wiki style markup of plain text
+      don<apos/>t properly take into account document meta information, and they
+      certainly don<apos/>t handle bibliographic data. This package provides that as
+      well as generating compact and semantically meaningful XML that can be
+      transformed to any other schema. This package produces XML to the
+      <a href="http://docbook.sourceforge.net/">Docbook</a> schema, for example. DocBook
+      may then be used for transforming to present and future formats such as the <a
+      href="http://www.openebook.org/">epub</a> format (using the most recent versions
+      of the <a href="http://sourceforge.net/projects/docbook/">DocBook XSL
+      stylesheets</a>) used in the <a href="http://en.wikipedia.org/wiki/Sony_Reader">Sony Reader</a> and <a
+      href="http://www.adobe.com/products/digitaleditions/">Adobe Digital
+      Editions</a>.</p>
+      <p>The perspective-schema DTD allows the creation of articles with hyperlinks, 
+      footnote entries, itemised lists, tables, image inclusions and citations, as 
+      well as certain inline elements such as superscripts, bold, underline and 
+      italic. It also handles proper quotation marks and a useful subset of foreign 
+      characters and currency symbols. The XSLT stylesheet will insert a drop cap at 
+      the start of the text body, process footnotes to provide forward and backward 
+      links, and create author initials in bibliographic entries. </p>
+      <p>Perspective provides a DTD for a reduced markup language, </p>
+      <pre>Namespace
+      <a href="http://www.e-conomist.me.uk/xml/dtd/perspective-schema.dtd">http://www.e-conomist.me.uk/xml/dtd/perspective-schema.dtd</a>
+      PUBLIC    "-//CTIPPER//DTD perspective XML V2.1//EN"</pre>
+      <p>A Workflow can be defined as follows:</p>
+      <enumerate>
+         <item><p>Create perspective DTD-based XML document based documents from the
+         samples in xml folder.</p></item>
+         <item><p>Output may be produced by using the supplied Tcl/Tk scripts which use:</p></item>
+         <item><p>Output HTML using <tt>stylesheet/html-dbk-perspective.xsl</tt></p></item>
+         <item><p>Output Docbook XML using <tt>stylesheet/dbk-perspective.xsl</tt></p></item>
+         <item><p>Output alternate HTML using <tt>stylesheet/html-perspective.xsl</tt></p></item>
+         <item><p>Output PDF by transforming to formatting-objects with
+         <tt>stylesheet/fo-perspective.xsl</tt> and then using the fop renderer</p></item>
+      </enumerate>
+      <p class="lead">Notes:</p>
+      <p>The supplied Tcl scripts uses xsltproc and trang validator. You may use GNOME libxml to process 
+      the pages. See your operating system documentation. Libxml2 is bundled by default  
+      on macOS.</p>
+      <p>To produce PDF you will need a FO renderer, such as Apache FOP <a href="https://xmlgraphics.apache.org/fop/">https://xmlgraphics.apache.org/fop/</a>
+      Installation is somewhat involved see documentation particularly if you need
+      non-standard fonts and hyphenation.</p>
+      <p>Typical command-lines as follows:</p>
+      <sub-heading>XHTML</sub-heading>
+      <pre>xsltproc.exe --stringparam file-name e-template 
+             --stringparam path-name "" --output ..\e-template.html 
+..\stylesheets\html-perspective.xsl e-template.xml</pre>
+      <sub-heading>PDF</sub-heading>
+      <pre>xsltproc.exe --stringparam file-name e-template 
+             --stringparam path-name ../ --stringparam fo-processor xep 
+--output e-template.fo ..\stylesheets\fo-perspective.xsl e-template.xml</pre>
+      <p>then</p>
+      <pre>c:\xep\xep.bat e-template.fo</pre>
+      <p>The variable <tt>path-name</tt> refers to the path to images/ from the output 
+      directory: uses the Unix path syntax i.e. forward slash.</p>
+      <sub-heading>Docbook</sub-heading>
+      <pre>xsltproc.exe --output ..\docbook\e-template.xml
+..\stylesheets\dbk-perspective.xsl e-template.xml</pre>
+      <sub-heading>LICENSE&mdash;see LICENSE.txt</sub-heading>
+      <p>The license for this product (<q>LICENSE.txt</q>) is fairly standard.
+      Modification of the software is at the user<apos/>s own risk, all derivative
+      products must give proper attribution. <stop /></p>
+   </body>
+</document>

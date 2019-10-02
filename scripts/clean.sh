@@ -1,0 +1,21 @@
+#!/bin/bash
+rm ../docbook/e-template.xml
+rm ../docbook/perspective.xml
+rm ../docbook/perspective-readme.xml
+rm ../docbook/tropical.xml
+rm ../site/e-template.html
+rm ../site/perspective.html
+rm ../site/perspective-readme.html
+rm ../site/tropical.html
+rm ../site/e-template.htm
+rm ../site/perspective.htm
+rm ../site/perspective-readme.htm
+rm ../site/tropical.htm
+rm ../site/pdf/e-template.fo
+rm ../site/pdf/perspective.fo
+rm ../site/pdf/perspective-readme.fo
+rm ../site/pdf/tropical.fo
+rm ../site/pdf/e-template.pdf
+rm ../site/pdf/perspective.pdf
+rm ../site/pdf/perspective-readme.pdf
+rm ../site/pdf/tropical.pdf

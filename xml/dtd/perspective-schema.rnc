@@ -1,0 +1,314 @@
+# ......................................................................
+
+# perspective XML DTD V2.6.0 ...........................................
+
+# File perspective-schema.dtd ..........................................
+
+# Copyright © 2003, 2005, 2007, 2016, 2017, 2018 Christopher Tipper
+# A DTD for a reduced markup language, and simple blog
+# 
+#   Namespace "http://www.e-conomist.me.uk/xml/dtd/perspective-schema.dtd"
+#   PUBLIC    "-//CTIPPER//DTD perspective XML V2.1//EN" 
+#
+
+# ......................................................................
+
+# %inline;
+# An inline element. 
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+inline = text | i | b | u | tt | sup | sub | sq | q | apos
+# %itags;
+# itags are inline elements that are used in a different context. 
+itags = cite | a
+# ......................................................................
+
+# document is the top-level element
+document =
+  element document { attlist.document, info, body, bibliography? }
+attlist.document &= empty
+# info holds meta-information
+info =
+  element info {
+    attlist.info,
+    title,
+    subtitle,
+    author,
+    date?,
+    copyright?,
+    keywords?,
+    revhistory?,
+    introduction?
+  }
+attlist.info &= empty
+# body holds the content
+body =
+  element body {
+    attlist.body,
+    (blog
+     | section
+     | p+
+     | enumerate
+     | itemize
+     | sub-heading
+     | center
+     | blockquote
+     | table
+     | hr
+     | a
+     | img
+     | byline
+     | pre
+     | epigraph)*
+  }
+attlist.body &= empty
+# section separates content
+section =
+  element section {
+    attlist.section,
+    title,
+    (p+
+     | enumerate
+     | itemize
+     | sub-heading
+     | center
+     | blockquote
+     | table
+     | hr
+     | a
+     | img
+     | byline
+     | pre
+     | epigraph)*
+  }
+attlist.section &= attribute id { text }?
+# blog constructs
+blog =
+  element blog {
+    attlist.blog,
+    bloginfo,
+    (p+
+     | enumerate
+     | itemize
+     | sub-heading
+     | center
+     | blockquote
+     | table
+     | hr
+     | a
+     | img
+     | byline
+     | pre
+     | epigraph)*
+  }
+attlist.blog &= attribute id { text }
+bloginfo = element bloginfo { attlist.bloginfo, title, date, keywords? }
+attlist.bloginfo &= empty
+# meta information is contained in the following tags
+title = element title { attlist.title, inline* }
+attlist.title &= empty
+subtitle = element subtitle { attlist.subtitle, inline* }
+attlist.subtitle &= empty
+author = element author { attlist.author, text }
+attlist.author &= empty
+date = element date { attlist.date, text }
+attlist.date &= empty
+copyright = element copyright { attlist.copyright, owner, year }
+attlist.copyright &= empty
+owner = element owner { attlist.owner, text }
+attlist.owner &= empty
+year = element year { attlist.year, text }
+attlist.year &= empty
+keywords = element keywords { attlist.keywords, text }
+attlist.keywords &= empty
+revhistory = element revhistory { attlist.revhistory, revision+ }
+attlist.revhistory &= empty
+revision =
+  element revision { attlist.revision, revnumber, revdate, revremark }
+attlist.revision &= empty
+revdate = element revdate { attlist.revdate, text }
+attlist.revdate &= empty
+revnumber = element revnumber { attlist.revnumber, text }
+attlist.revnumber &= empty
+revremark = element revremark { attlist.revremark, (inline | a)* }
+attlist.revremark &= empty
+introduction = element introduction { attlist.introduction, p+ }
+attlist.introduction &= empty
+# ......................................................................
+
+# inline element declarations
+sq = element sq { attlist.sq, (inline | itags)* }
+attlist.sq &= empty
+q = element q { attlist.q, (inline | itags)* }
+attlist.q &= empty
+sup = element sup { attlist.sup, text }
+attlist.sup &= empty
+sub = element sub { attlist.sub, text }
+attlist.sub &= empty
+cite = element cite { attlist.cite, text }
+attlist.cite &= empty
+b = element b { attlist.b, (inline | itags)* }
+attlist.b &= empty
+u = element u { attlist.u, (inline | itags)* }
+attlist.u &= empty
+i = element i { attlist.i, (inline | itags)* }
+attlist.i &= empty
+tt = element tt { attlist.tt, (inline | itags)* }
+attlist.tt &= empty
+footnote = element footnote { attlist.footnote, (inline | itags | p)* }
+attlist.footnote &= empty
+byline = element byline { attlist.byline, (inline | itags)* }
+attlist.byline &= empty
+a = element a { attlist.a, inline* }
+attlist.a &=
+  [ a:defaultValue = "#" ] attribute href { text }?,
+  attribute name { text }?,
+  attribute title { text }?,
+  attribute type { text }?,
+  attribute property { text }?
+hr = element hr { attlist.hr, empty }
+attlist.hr &= empty
+stop = element stop { attlist.stop, empty }
+attlist.stop &= empty
+apos = element apos { attlist.apos, empty }
+attlist.apos &= empty
+annotation = element annotation { attlist.annotation, title, p+ }
+attlist.annotation &= empty
+# ......................................................................
+
+# block element declarations
+p =
+  element p {
+    attlist.p, (inline | itags | img | footnote | annotation | stop)*
+  }
+attlist.p &=
+  attribute align { "left" | "right" | "center" }?,
+  attribute class { text }?
+pre = element pre { attlist.pre, (inline | itags | footnote)* }
+attlist.pre &= empty
+center =
+  element center {
+    attlist.center, (inline | itags | img | footnote | stop)*
+  }
+attlist.center &= attribute class { text }?
+blockquote = element blockquote { attlist.blockquote, p+ }
+attlist.blockquote &= empty
+epigraph = element epigraph { attlist.epigraph, p+ }
+attlist.epigraph &= empty
+sub-heading =
+  element sub-heading { attlist.sub-heading, (inline | itags)* }
+attlist.sub-heading &= empty
+enumerate = element enumerate { attlist.enumerate, item+ }
+attlist.enumerate &= attribute style { "1" | "a" | "A" | "i" | "I" }?
+itemize = element itemize { attlist.itemize, item+ }
+attlist.itemize &= empty
+item = element item { attlist.item, p+ }
+attlist.item &= empty
+# ......................................................................
+
+# image inclusion 
+# * dimensions are pixels, with implied resolution of 96dpi
+# * src attribute represents image name _without_ file extension
+# * alt is a required attribute
+# * align default is 'center'
+# * space attribute is padding in pixels around image
+# * pdfres attribute represents pdf resolution in dpi
+# * float set to 'yes' for floating image in pdf output
+img = element img { attlist.img, caption* }
+attlist.img &=
+  attribute src { text },
+  attribute width { text },
+  attribute height { text },
+  attribute alt { text },
+  attribute align { "left" | "right" | "center" }?,
+  attribute space { text }?,
+  attribute border { text }?,
+  attribute format { "jpg" | "gif" | "png" | "svg" | "pdf" },
+  attribute pdfres { text }?,
+  attribute float { text }?
+caption = element caption { attlist.caption, (inline | itags)* }
+attlist.caption &= attribute figure { "yes" | "no" }?
+# ......................................................................
+
+# reduced bibliography markup 
+# We do not need the more elaborate schemes elsewhere 
+# as we are only dealing with books and journals.
+bibliography = element bibliography { attlist.bibliography, bibitem* }
+attlist.bibliography &= empty
+bibitem =
+  element bibitem {
+    attlist.bibitem,
+    (author
+     | editor
+     | title
+     | month
+     | year
+     | journal
+     | publisher
+     | edition
+     | note)+
+  }
+attlist.bibitem &=
+  attribute type { "article" | "book" },
+  attribute label { text }
+editor = element editor { attlist.editor, text }
+attlist.editor &= empty
+journal = element journal { attlist.journal, (text | a)* }
+attlist.journal &= empty
+publisher = element publisher { attlist.publisher, text }
+attlist.publisher &= empty
+month = element month { attlist.month, text }
+attlist.month &= empty
+edition = element edition { attlist.edition, text }
+attlist.edition &= empty
+note = element note { attlist.note, (inline | itags)* }
+attlist.note &= empty
+# ......................................................................
+
+# table markup
+# Allows simplified tables compatible with HTML table model
+table = element table { attlist.table, label?, tgroup+ }
+attlist.table &= attribute align { "left" | "right" | "center" }?
+label = element label { attlist.label, (inline | itags)* }
+attlist.label &= attribute number { "yes" | "no" }?
+tgroup =
+  element tgroup { attlist.tgroup, columns+, thead?, tfoot?, tbody }
+attlist.tgroup &= attribute cols { text }
+columns = element columns { attlist.columns, empty }
+attlist.columns &=
+  attribute number { text },
+  attribute width { text }?,
+  attribute align { "left" | "right" | "center" }?
+thead = element thead { attlist.thead, row* }
+attlist.thead &= empty
+tfoot = element tfoot { attlist.tfoot, row* }
+attlist.tfoot &= empty
+tbody = element tbody { attlist.tbody, row* }
+attlist.tbody &= empty
+row = element row { attlist.row, column* }
+attlist.row &= attribute valign { "top" | "middle" | "bottom" }?
+column =
+  element column {
+    attlist.column, (inline | itags | p | footnote | annotation)*
+  }
+attlist.column &=
+  attribute align { "left" | "center" | "right" }?,
+  attribute span { text }?,
+  attribute class { text }?
+start = document
+# ......................................................................
+
+# ISO character entities
+
+# end of ISOlat1.module
+
+# end of ISOnum.module
+
+# end of ISOpub.module
+
+# end of ISOmisc.module
+
+# .....................................................................
+
+# End of perspective-schema dtd

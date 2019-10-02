@@ -1,0 +1,298 @@
+<?xml version="1.0"?> 
+<!DOCTYPE document PUBLIC "-//CTIPPER//DTD perspective XML V2.1//EN" "dtd/perspective-schema.dtd">
+<document>
+   <info>
+      <title>This is the author<apos/>s <q>Title</q></title> 
+      <subtitle>This is the article<apos/>s subtitle</subtitle>
+      <author>Christopher Tipper</author>
+      <date>Saturday, 12th October 2002</date>
+      <copyright>
+         <owner>Christopher Tipper</owner>
+         <year>2002</year>
+      </copyright>
+      <keywords>keywords here, more keywords, yet more keywords</keywords>
+      <revhistory>
+         <revision>
+            <revnumber>1.3</revnumber>
+            <revdate>Friday, 11th March 2005</revdate>
+            <revremark>
+               Updated Perspective DTD with new &lt;info&gt; element.
+            </revremark>
+         </revision>
+         <revision>
+            <revnumber>1.2</revnumber>
+            <revdate>Thursday, 2nd October 2003</revdate>
+            <revremark>
+               Table element brought into line with CALS table model.
+            </revremark>
+         </revision>
+         <revision>
+            <revnumber>1.1</revnumber>
+            <revdate>Tuesday, 30th September 2003</revdate>
+            <revremark>
+               Added revison syntax to ::perspective DTD.
+            </revremark>
+         </revision>
+      </revhistory>
+      <introduction> 
+         <p>This is a demonstration of the ::perspective stylesheet. It is 
+         not a comprehensive collection at present, merely implementing those
+         markup elements that are needed to support general article semantics, such
+         as footnotes, bibliography support, lists of various types, tables and
+         image inclusion.</p>
+         <p>New elements will be added as and when required.</p>
+      </introduction> 
+   </info>
+   <body>
+      <section id="first">
+         <title>The initial heading</title>
+         <epigraph>
+            <p><q>Democracy is that system of government under which the people, having 35,717,342 
+            native-born adult whites to choose from, including thousands who are handsome 
+            and many who are wise, pick out a Coolidge to be head of State.</q></p>
+            <p>&mdash;H. L. Mencken, <i>Prejudices</i>, Fifth Series, 1926.</p>
+         </epigraph>
+         <img src="dijon" format="jpg" width="233" height="317" alt="Hospices de Beaune" 
+              align="right" space="10" border="0" pdfres="200">
+            <caption figure="yes">The H&ocirc;spices de Beaune Hospital
+            <q>H&ocirc;tel Dieu</q> was built in 1443 by Nicola Rodin, Chancellor
+            of Philippe le-Bon, Duke of Burgundy. In the wake of the Hundred
+            Years<apos/> War, Beaune was suffering from famine. Today it runs 61
+            hectares of vines and each year since 1859 it has organised the most
+            famous wine auction in the world.</caption>
+         </img>
+         <p>Article text goes here. And this has a footnote.<footnote>This is an explanatory 
+         endnote.</footnote> Some <sq>single quotes</sq> and <q>double-quotes</q> and some symbols 
+         and foreign characters &mdash; &dollar;&pound;&yen;&euro;&cent;&copy;&deg;&plusmn;
+         &szlig;&uuml;&auml;&aacute;&agrave;&eacute;&egrave;. And there's more: &ecirc;&ouml;&ocirc;&ccedil;&oslash;.</p>
+         <p>We thrive in information-thick worlds because of our marvelous and everyday 
+         capacity to select, edit, single out, structure, highlight, group, pair, merge, 
+         harmonize, synthesize, focus, organize, condense, reduce, boil down, choose, 
+         categorize, catalog, classify, list, abstract, scan, look into, idealize,<footnote>Ideal&mdash;see 
+         <a href="http://classics.mit.edu/Plato/">Plato</a></footnote> isolate, 
+         discriminate, distinguish, screen, pigeonhole, pick over, sort, integrate, blend, 
+         inspect, filter, lump, skip, smooth, chunk, average, approximate, cluster, aggregate, 
+         outline, summarize, itemize, review, dip into, flip through, browse, glance 
+         into, leaf through, skim, refine, enumerate, glean, synopsize, winnow the wheat 
+         from the chaff and separate the sheep from the goats. </p>
+         <p>Quoted text</p>
+         <a name="Thuc01"/>
+         <blockquote> 
+            <p><sup>6.8</sup> At the beginning of spring 415 BC the Athenian
+            delegation returned from Sicily. They brought with them the
+            Egestaeans and sixty talents of uncoined silver, a months pay for
+            sixty triremes and their supplies.</p>
+            <p>The Athenians held an assembly and heard the Egestaeans and their
+            own envoys. It was reported that there were large quantities of
+            money in the treasury and the temples, and they voted to send sixty
+            ships under the command of three generals, Alcibiades, Nicias and
+            Lamachus. <footnote>The leaders of an expeditionary force</footnote>
+            They were appointed with full powers and given orders to help the
+            Egestaeans against the Selinuntines, to restore Leontini subsequent
+            to victory and act in the best interests of Athens with regard to
+            further action in Sicily. <cite>Thucydides</cite></p>
+         </blockquote>
+         <p class="blockText" align="center">And another line of centred block text.</p>
+         <p>More article text goes here with a citation <cite>Mill</cite>.</p>
+      </section>
+      <section id="second">
+         <title>Second Heading</title>
+         <p>And we now add a simple enumeration:</p>
+         <enumerate style="i"> 
+            <item><p>This is the <sq>first</sq> item.</p> </item> 
+            <item><p>This is the <sq>second</sq> item. </p></item> 
+            <item><p>This is the <sq>third</sq> item.</p></item> 
+         </enumerate> 
+         <p class="text-muted">Showing the <sq>text-muted</sq> style, we have the quote again 
+         <q>We thrive in information-thick worlds because of our marvelous and everyday 
+         capacity to select, edit, single out, structure, highlight, group, pair, merge, 
+         harmonize, synthesize, focus, organize, condense, reduce, boil down, choose, 
+         categorize, catalog, classify, list, abstract, scan, look into, idealize, isolate, 
+         discriminate, distinguish, screen, pigeonhole, pick over, sort, integrate, blend, 
+         inspect, filter, lump, skip, smooth, chunk, average, approximate, cluster, aggregate, 
+         outline, summarize, itemize, review, dip into, flip through, browse, glance 
+         into, leaf through, skim, refine, enumerate, glean, synopsize, winnow the wheat 
+         from the chaff and separate the sheep from the goats.</q>
+         </p>
+         <p>And we now add a bulleted list:</p>
+         <itemize> 
+            <item><p>Item One.</p></item> 
+            <item><p>Item Two.</p></item> 
+            <item><p>Item Three.</p></item> 
+         </itemize>
+         <p class="blockItalic">The <sq>blockItalic</sq> style: <q>We thrive in 
+         information-thick worlds because of our marvelous and everyday 
+         capacity to select, edit, single out, structure, highlight, group, pair, merge, 
+         harmonize, synthesize, focus, organize, condense, reduce, boil down, choose, 
+         categorize, catalog, classify, list, abstract, scan, look into, idealize, isolate, 
+         discriminate, distinguish, screen, pigeonhole, pick over, sort, integrate, blend, 
+         inspect, filter, lump, skip, smooth, chunk, average, approximate, cluster, aggregate, 
+         outline, summarize, itemize, review, dip into, flip through, browse, glance 
+         into, leaf through, skim, refine, enumerate, glean, synopsize, winnow the wheat 
+         from the chaff and separate the sheep from the goats.</q></p>
+         <p align="right">Some text that is right aligned.</p>
+      </section>
+      <section id="third">
+         <title>Third Heading</title>
+         <p><q>We thrive in information-thick worlds because of our marvelous and everyday 
+         capacity to select, edit, single out, structure, highlight, group, pair, merge, 
+         harmonize, synthesize, focus, organize, condense, reduce, boil down, choose, 
+         categorize, catalog, classify, list, abstract, scan, look into, idealize, isolate, 
+         discriminate, distinguish, screen, pigeonhole, pick over, sort, integrate, blend, 
+         inspect, filter, lump, skip, smooth, chunk, average, approximate, cluster, aggregate, 
+         outline, summarize, itemize, review, dip into, flip through, browse, glance 
+         into, leaf through, skim, refine, enumerate, glean, synopsize, winnow the wheat 
+         from the chaff and separate the sheep from the goats.</q></p>
+         <pre>Literal text:
+         xsltproc.exe --stringparam file-name e-template 
+         --stringparam path-name ../ --stringparam fo-processor xep 
+         --output e-template.fo ..\stylesheets\fo-e-template.xsl 
+         e-template.xml</pre>
+         <p>We have table handling as demonstrated below:</p>
+         <table>
+            <label number="yes">An oil price series showing the expected cost of petrol based on 
+            a fixed component of production in the US of &dollar;12.67 per barrel of oil 
+            i.e. the refining and extraction costs. The data is based on pump-price in Lousiana, July 2001.</label>
+            <tgroup cols="11">
+               <columns number="1" width="190" align="left"/>
+               <columns number="2" width="77" align="right"/>
+               <columns number="3" width="77" align="right"/>
+               <columns number="4" width="77" align="right"/>
+               <columns number="5" width="77" align="right"/>
+               <columns number="6" width="77" align="right"/>
+               <columns number="7" width="77" align="right"/>
+               <columns number="8" width="77" align="right"/>
+               <columns number="9" width="77" align="right"/>
+               <columns number="10" width="77" align="right"/>
+               <columns number="11" width="77" align="right"/>
+               <tbody>
+                  <row valign="bottom">
+                     <column><b>Oil Price per barrel</b></column>
+                     <column>&dollar;32</column>
+                     <column>&dollar;34</column>
+                     <column>&dollar;36</column>
+                     <column>&dollar;38</column>
+                     <column>&dollar;40</column>
+                     <column>&dollar;42</column>
+                     <column>&dollar;44</column>
+                     <column>&dollar;46</column>
+                     <column>&dollar;48</column>
+                     <column>&dollar;50</column>
+                  </row>
+                  <row valign="bottom">
+                     <column><sq>barrel</sq> of petrol<footnote>Price of 1 Barrel + &dollar;12.67</footnote></column>
+                     <column>&dollar;44.67</column>
+                     <column>&dollar;46.67</column>
+                     <column>&dollar;48.67</column>
+                     <column>&dollar;50.67</column>
+                     <column>&dollar;52.67</column>
+                     <column>&dollar;54.67</column>
+                     <column>&dollar;56.67</column>
+                     <column>&dollar;58.67</column>
+                     <column>&dollar;60.67</column>
+                     <column>&dollar;62.67</column>
+                  </row>
+                  <row valign="bottom">
+                     <column>per US Gallon</column>
+                     <column>&dollar;1.06</column>
+                     <column>&dollar;1.11</column>
+                     <column>&dollar;1.16</column>
+                     <column>&dollar;1.21</column>
+                     <column>&dollar;1.25</column>
+                     <column>&dollar;1.30</column>
+                     <column>&dollar;1.35</column>
+                     <column>&dollar;1.40</column>
+                     <column>&dollar;1.44</column>
+                     <column>&dollar;1.49</column>
+                  </row>
+                  <row valign="bottom">
+                     <column>per litre</column>
+                     <column>&dollar;0.28</column>
+                     <column>&dollar;0.29</column>
+                     <column>&dollar;0.31</column>
+                     <column>&dollar;0.32</column>
+                     <column>&dollar;0.33</column>
+                     <column>&dollar;0.34</column>
+                     <column>&dollar;0.36</column>
+                     <column>&dollar;0.37</column>
+                     <column>&dollar;0.38</column>
+                     <column>&dollar;0.39</column>
+                  </row>
+                  <row valign="bottom">
+                     <column>GBP per litre<footnote>&dollar;1.61 to &pound;1</footnote>
+                     </column>
+                     <column>&pound;0.17</column>
+                     <column>&pound;0.18</column>
+                     <column>&pound;0.19</column>
+                     <column>&pound;0.20</column>
+                     <column>&pound;0.21</column>
+                     <column>&pound;0.21</column>
+                     <column>&pound;0.22</column>
+                     <column>&pound;0.23</column>
+                     <column>&pound;0.24</column>
+                     <column>&pound;0.24</column>
+                  </row>
+                  <row valign="bottom">
+                     <column><b>UK pump price per litre</b><footnote>(base price + excise duty @ &pound;0.5234) * VAT @ 17.5&percnt;</footnote></column>
+                     <column>&pound;0.82</column>
+                     <column>&pound;0.83</column>
+                     <column>&pound;0.84</column>
+                     <column>&pound;0.85</column>
+                     <column>&pound;0.86</column>
+                     <column>&pound;0.87</column>
+                     <column>&pound;0.88</column>
+                     <column>&pound;0.88</column>
+                     <column>&pound;0.89</column>
+                     <column>&pound;0.90</column>
+                  </row>
+               </tbody>
+            </tgroup>
+         </table>
+         <p>And now we conclude the article with a stop character. <stop/></p>
+      </section>
+   </body>
+   <bibliography>
+      <bibitem type="book" label="Hayek">
+         <author>Freidrich A. Hayek</author>
+         <title>The Road to Serfdom</title>
+         <year>1944</year>
+         <publisher>London: Routledge</publisher>
+      </bibitem>
+      <bibitem type="book" label="Mill">
+         <author>John Stuart Mill</author> 
+         <title>Utilitarianism</title>
+         <year>1863</year> 
+         <publisher>London: Parker, Son, and Bourne</publisher>
+         <edition>1st</edition>
+         <note><i>vivus</i> 1806-1873</note>
+      </bibitem>
+      <bibitem type="book" label="Popper">
+         <author>Karl Raimund Popper</author>
+         <title>The Open Society and Its Enemies</title>
+         <year>1966</year>
+         <publisher>London: Routledge</publisher>
+         <edition>5th</edition>
+      </bibitem>
+      <bibitem type="book" label="Raphael">
+         <author>David Daiches Raphael</author>
+         <title>Moral Philosophy</title>
+         <year>1981</year> 
+         <publisher>Oxford: Oxford University Press</publisher>
+      </bibitem>
+      <bibitem type="book" label="Thucydides"> 
+         <author>Thucydides</author>
+         <editor>Richard Crawley</editor>
+         <title>The Peloponnesian War</title>
+         <year>1910</year> 
+         <publisher>London, J. M. Dent; New York, E. P. Dutton</publisher>
+         <note><a href="#Thuc01">Back</a></note>
+      </bibitem>
+      <bibitem type="article" label="McKinsey">
+         <editor>Bill Lewis and Ted Hall and Robert Solow and Stephen Nickell</editor>
+         <title>Driving productivity and growth in the UK economy</title>
+         <month>October</month>
+         <year>1998</year>
+         <journal>McKinsey Global Institute</journal>
+      </bibitem>
+   </bibliography> 
+</document> 

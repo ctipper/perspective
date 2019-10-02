@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!DOCTYPE document PUBLIC "-//CTIPPER//DTD perspective XML V2.1//EN" "dtd/perspective-schema.dtd">
+<document>
+   <info>
+      <title>Table example</title>
+      <subtitle>An example table used for testing</subtitle>
+      <author>Christopher Tipper</author>
+      <date>June 2004</date>
+      <copyright>
+         <owner>Christopher Tipper</owner>
+         <year>2004</year>
+      </copyright>
+   </info>
+   <body>
+      <p>We thrive in information-thick worlds because of our marvelous and everyday 
+      capacity to select, edit, single out, structure, highlight, group, pair, merge, 
+      harmonize, synthesize, focus, organize, condense, reduce, boil down, choose, 
+      categorize, catalog, classify, list, abstract, scan, look into, idealize,<footnote>Ideal&mdash;see 
+      <a href="http://classics.mit.edu/Plato/">Plato</a></footnote> isolate, 
+      discriminate, distinguish, screen, pigeonhole, pick over, sort, integrate, blend, 
+      inspect, filter, lump, skip, smooth, chunk, average, approximate, cluster, aggregate, 
+      outline, summarize, itemize, review, dip into, flip through, browse, glance 
+      into, leaf through, skim, refine, enumerate, glean, synopsize, winnow the wheat 
+      from the chaff and separate the sheep from the goats. </p>
+      <table align="center">
+         <label number="yes">Scope and incidence of Tropical Diseases, 1990</label>
+         <tgroup cols="4">
+            <columns number="1" width="195" align="left"/>
+            <columns number="2" width="115" align="right"/>
+            <columns number="3" width="137" align="right"/>
+            <columns number="4" width="115" align="right"/>
+            <thead>
+               <row>
+                  <column>Disease</column>
+                  <column align="center">Countries</column>
+                  <column align="center">Number</column>
+                  <column align="center">Number at</column>
+               </row>
+               <row>
+                  <column>&nbsp;</column>
+                  <column align="center">Afflicted</column>
+                  <column align="center">Infected<footnote>&rsquo;000</footnote></column>
+                  <column align="center">risk<footnote>&rsquo;000,000</footnote></column>
+               </row>
+            </thead>
+            <tfoot>
+               <row>
+                  <column span="4">SOURCE: World Health Organisation (WHO), Special Program, for Research and Training in Tropical Diseases, 1990.</column>
+               </row>
+            </tfoot>
+            <tbody>
+               <row>
+                  <column>Malaria</column>
+                  <column>103</column>
+                  <column>270,000</column>
+                  <column>2,100</column>
+               </row>
+               <row>
+                  <column>Schistomiasis</column>
+                  <column>76</column>
+                  <column>200,000</column>
+                  <column>600</column>
+               </row>
+               <row>
+                  <column>Lymphatic filiarisis</column>
+                  <column>76</column>
+                  <column>90,000</column>
+                  <column>900</column>
+               </row>
+               <row>
+                  <column>River blindness</column>
+                  <column>34</column>
+                  <column>17,000</column>
+                  <column>90</column>
+               </row>
+               <row>
+                  <column>Chagas&rsquo; disease</column>
+                  <column>21</column>
+                  <column>16-18,000</column>
+                  <column>90</column>
+               </row>
+               <row>
+                  <column>Leishmaniasis</column>
+                  <column>80</column>
+                  <column>12,000</column>
+                  <column>350</column>
+               </row>
+               <row>
+                  <column>Leprosy</column>
+                  <column>121</column>
+                  <column>10-12,000</column>
+                  <column>1,600</column>
+               </row>
+               <row>
+                  <column>African sleeping sickness</column>
+                  <column>36</column>
+                  <column>25</column>
+                  <column>50</column>
+               </row>
+            </tbody>
+         </tgroup>
+      </table>
+   </body>
+</document> 

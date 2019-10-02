@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE document PUBLIC "-//CTIPPER//DTD perspective XML V2.1//EN" "dtd/perspective-schema.dtd">
+<document>
+   <info>
+      <title>This is the author<apos/>s <q>Title</q></title>
+      <subtitle>This is the article<apos/>s subtitle</subtitle>
+      <author>Christopher Tipper</author>
+      <date>Saturday, 12th March 2005</date>
+      <copyright>
+         <owner>Christopher Tipper</owner>
+         <year>2005</year>
+      </copyright>
+      <keywords>Wd2XML, perspective DTD, more keywords</keywords>
+      <introduction>
+         <p>This is a demonstration of the ::perspective stylesheets. It is not a 
+         comprehensive collection at present, merely implementing those markup 
+         elements that are needed to support general article semantics, such as 
+         footnotes, bibliography support, lists of various types, tables and image 
+         inclusion.</p>
+         <p>New elements will be added as and when required.</p>
+      </introduction>
+   </info>
+   <body>
+      <img src="dijon" format="jpg" width="233" height="317" alt="Hospices de Beaune" 
+           align="right" space="10" border="0" pdfres="200"><caption figure="yes">The H&ocirc;spices de 
+      Beaune Hospital <q>H&ocirc;tel Dieu</q> was built in 1443 by Nicola Rodin, Chancellor
+      of Philippe le-Bon, Duke of Burgundy. In the wake of the Hundred Years<apos/> War,
+      Beaune was suffering from famine. Today it runs 61 hectares of vines and each year since
+      1859 it has organised the most famous wine auction in the world.</caption></img>
+      <p>Article text goes here. And this has a footnote.<footnote><p>This is an 
+      explanatory endnote.</p></footnote> Some <sq>single quotes</sq> and <q>double-quotes</q> and foreign <u><i><b>characters</b></i></u> 
+      &mdash;&dollar;&pound;&yen;&euro;&cent;&copy;&deg;&plusmn;&half;&szlig;&uuml;&auml;&aacute;&agrave;&eacute;&egrave;. And there's more: 
+      &ecirc;&ouml;&ocirc;&ccedil;&oslash;.</p>
+      <sub-heading>sub-heading</sub-heading>
+      <p>Quoted text</p>
+      <blockquote>
+         <p>We thrive in information-thick worlds because of our marvelous and 
+         everyday capacity to select, edit, single out, structure, highlight, group, 
+         pair, merge, harmonize, synthesize, focus, organize, condense, reduce, boil 
+         down, choose, categorize, catalog, classify, list, abstract, scan, look into, 
+         idealize, isolate, discriminate, distinguish, screen, pigeonhole, pick over, 
+         sort, integrate, blend, inspect, filter, lump, skip, smooth, chunk, average, 
+         approximate, cluster, aggregate, outline, summarize, itemize, review, dip 
+         into, flip through, browse, glance into, leaf through, skim, refine, 
+         enumerate, glean, synopsize, winnow the wheat from the chaff and separate the 
+         sheep from the goats. </p>
+      </blockquote>
+      <a name="Thuc01"></a><p class="text-muted"><sup>6.8</sup> At the beginning of  
+      spring 415 BC the Athenian delegation returned from Sicily. They brought with 
+      them the Egestaeans and sixty talents of uncoined silver, a months pay for 
+      sixty triremes and their supplies.</p>
+      <p class="text-muted">The Athenians held an assembly and heard the Egestaeans 
+      and their own envoys. It was reported that there were large quantities of 
+      money in the treasury and the temples, and they voted to send sixty ships 
+      under the command of three generals, Alcibiades, Nicias and Lamachus. They 
+      were appointed with full powers and given orders to help the Egestaeans 
+      against the Selinuntines, to restore Leontini subsequent to victory and act 
+      in the best interests of Athens with regard to further action in Sicily. 
+      <cite>Thucydides</cite></p>
+      <p>In practice, the distinction between noosphere and ergosphere is not 
+      important for the purposes of this paper. It is dubious whether the 
+      <sq>noosphere</sq> in the pure sense Fare insists on can be said to exist in 
+      any meaningful way; one would almost have to be a Platonist philosopher to 
+      believe in it. And the distinction between noosphere and ergosphere is only 
+      of <i>practical </i>importance if one wishes to assert that ideas (the 
+      elements of the noosphere) cannot be owned, but their instantiations as 
+      projects can.</p>
+      <p class="bodyTextItalic">To avoid confusion, however, it is important to 
+      note that neither the noosphere nor the ergosphere is the same as the 
+      totality of virtual locations in electronic media that is sometimes called 
+      <sq>cyberspace</sq>. Property there is regulated by completely different 
+      rules that are closer to those of the material substratum&mdash;essentially, 
+      he who owns the media and machines on which a part of <sq>cyberspace</sq> is 
+      hosted owns that piece of cyberspace as a result.</p>
+      <p>More article text goes here with a citation <cite>Chaitin</cite>.</p>
+      <p>An we now add a simple enumeration:</p>
+      <enumerate>
+         <item><p>This is the <sq>first</sq> item. </p></item>
+         <item><p>This is the <sq>second</sq> item. </p></item>
+         <item><p>This is the <sq>third</sq> item.</p></item>
+      </enumerate>
+      <p>Article text goes here with another citation <cite>Mill</cite>.</p>
+      <p>An we now add a bulletted list:</p>
+      <itemize>
+         <item><p>Item One.</p></item>
+         <item><p>Item Two.</p></item>
+         <item><p>Item Three.</p></item>
+      </itemize>
+      <p>And now we conclude the article with a stop character. <stop /></p>
+   </body>
+   <bibliography>
+      <bibitem type="article" label="Chaitin">
+         <author>Gregory Chaitin</author>
+         <month>May</month>
+         <year>1975</year>
+         <title>Randomness and Mathematical Proof</title>
+         <journal>Scientific American 232, No 5</journal>
+         <note>pp. 47-52</note>
+      </bibitem>
+      <bibitem type="book" label="Mill">
+         <author>John Stuart Mill</author> 
+         <year>1863</year> 
+         <title>Utilitarianism</title>
+         <publisher>London: Parker, Son, and Bourn</publisher>
+         <edition>1st</edition>
+         <note><i>vivus</i> 1806-1873</note>
+      </bibitem>
+      <bibitem type="book" label="Thucydides"> 
+         <author>Thucydides</author>
+         <editor>Rex Warner</editor>
+         <title>The Peloponnesian War</title>
+         <year>1972</year> 
+         <publisher>Harmondsworth, Middlesex: Penguin Books</publisher>
+         <note><a href="#Thuc01">Back</a></note>
+      </bibitem>
+   </bibliography>
+</document>
