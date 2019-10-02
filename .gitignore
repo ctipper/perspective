@@ -1,3 +1,5 @@
+!docbook*
+!.gitignore
 docbook.dtd
 docbookxi.rnc
 docbookxi.rng
