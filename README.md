@@ -61,18 +61,18 @@ recommended.
 XHTML
 
     xsltproc.exe --stringparam file-name e-template 
-                 --stringparam path-name "" --output ..\e-template.html 
+                 --stringparam path-name "" --output ..\site\e-template.html 
     ..\stylesheets\html-perspective.xsl e-template.xml
 
 PDF
 
     xsltproc.exe --stringparam file-name e-template 
-                 --stringparam path-name ../ --stringparam fo-processor xep 
-    --output e-template.fo ..\stylesheets\fo-perspective.xsl e-template.xml
+                 --stringparam path-name ../ --stringparam fo-processor fop 
+    --output ..\site\pdf\e-template.fo ..\stylesheets\fo-perspective.xsl e-template.xml
 
 then
 
-    fop -c ../config/fop.xconf -fo e-template.fo -pdf e-template.pdf 
+    fop -c ../config/fop.xconf -fo ..\site\e-template.fo -pdf ..\site\e-template.pdf 
 
 The variable path-name refers to the path to images/ from the output directory:
 uses the Unix path syntax i.e. forward slash.
