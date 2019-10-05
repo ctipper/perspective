@@ -74,7 +74,7 @@
                  --stringparam path-name ../ --stringparam fo-processor fop 
     --output ..\site\pdf\e-template.fo ..\stylesheets\fo-perspective.xsl e-template.xml</pre>
       <p>then</p>
-      <pre>    fop -c ../config/fop.xconf -fo ..\site\e-template.fo -pdf ..\site\e-template.pdf</pre>
+      <pre>    fop -c ../config/fop.xconf -fo ..\site\pdf\e-template.fo -pdf ..\site\pdf\e-template.pdf</pre>
       <p>The variable <tt>path-name</tt> refers to the path to images/ from the output 
       directory: uses the Unix path syntax i.e. forward slash.</p>
       <sub-heading>Docbook</sub-heading>

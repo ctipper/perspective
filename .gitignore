@@ -1,5 +1,9 @@
 !docbook*
+!scripts*
+!pdf*
 !.gitignore
+*.htm
+*.html
 docbook.dtd
 docbookxi.rnc
 docbookxi.rng

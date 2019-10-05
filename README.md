@@ -37,9 +37,9 @@ A workflow can be defined as follows:
    xml folder.
 
 2. Output may be produced by using the supplied Tcl/Tk scripts which use:
-   - Output HTML using `stylesheet/html-perspective.xsl`
-   - Output PDF by transforming to formatting-objects with `stylesheet/fo-perspective.xsl` and then using the fop renderer
-   - Output Docbook XML using `stylesheet/dbk-perspective.xsl`
+   - Output HTML using `stylesheest/html-perspective.xsl`
+   - Output PDF by transforming to formatting-objects with `stylesheets/fo-perspective.xsl` and then using the fop renderer
+   - Output Docbook XML using `stylesheets/dbk-perspective.xsl`
 
 ## Notes:
 
@@ -72,7 +72,7 @@ PDF
 
 then
 
-    fop -c ../config/fop.xconf -fo ..\site\e-template.fo -pdf ..\site\e-template.pdf 
+    fop -c ../config/fop.xconf -fo ..\site\pdf\e-template.fo -pdf ..\site\pdf\e-template.pdf 
 
 The variable path-name refers to the path to images/ from the output directory:
 uses the Unix path syntax i.e. forward slash.
