@@ -51,9 +51,9 @@
          <item><p>Create perspective DTD-based XML document based documents from the
          samples in xml folder.</p></item>
          <item><p>Output may be produced by using the supplied Tcl/Tk scripts which use:</p></item>
-         <item><p>Output HTML using <tt>stylesheet/html-dbk-perspective.xsl</tt></p></item>
-         <item><p>Output Docbook XML using <tt>stylesheet/dbk-perspective.xsl</tt></p></item>
-         <item><p>Output alternate HTML using <tt>stylesheet/html-perspective.xsl</tt></p></item>
+         <item><p>Output HTML using <tt>stylesheets/html-dbk-perspective.xsl</tt></p></item>
+         <item><p>Output Docbook XML using <tt>stylesheets/dbk-perspective.xsl</tt></p></item>
+         <item><p>Output alternate HTML using <tt>stylesheets/html-perspective.xsl</tt></p></item>
          <item><p>Output PDF by transforming to formatting-objects with
          <tt>stylesheet/fo-perspective.xsl</tt> and then using the fop renderer</p></item>
       </enumerate>
@@ -80,8 +80,8 @@
       <sub-heading>Docbook</sub-heading>
       <pre>    xsltproc.exe --output ..\docbook\e-template.xml
     ..\stylesheets\dbk-perspective.xsl e-template.xml</pre>
-      <sub-heading>LICENSE&mdash;see LICENSE.txt</sub-heading>
-      <p>The license for this product (<q>LICENSE.txt</q>) is fairly standard.
+      <sub-heading>LICENSE&mdash;see <q>LICENSE</q></sub-heading>
+      <p>The license for this product (<q>LICENSE/q>) is fairly standard.
       Modification of the software is at the user<apos/>s own risk, all derivative
       products must give proper attribution. <stop /></p>
    </body>

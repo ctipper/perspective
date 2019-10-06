@@ -37,7 +37,7 @@ A workflow can be defined as follows:
    xml folder.
 
 2. Output may be produced by using the supplied Tcl/Tk scripts which use:
-   - Output HTML using `stylesheest/html-perspective.xsl`
+   - Output HTML using `stylesheets/html-perspective.xsl`
    - Output PDF by transforming to formatting-objects with `stylesheets/fo-perspective.xsl` and then using the fop renderer
    - Output Docbook XML using `stylesheets/dbk-perspective.xsl`
 
@@ -84,7 +84,7 @@ Docbook
 
 ## LICENSE
 
-The license for this product ("LICENSE.txt") is fairly standard. Modification
+The license for this product ("LICENSE") is fairly standard. Modification
 of the software is at the user's own risk, all derivative products must give
 proper attribution.
 
