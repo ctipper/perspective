@@ -66,22 +66,24 @@
       non-standard fonts and hyphenation.</p>
       <p>Typical command-lines as follows:</p>
       <sub-heading>XHTML</sub-heading>
-      <pre>    xsltproc.exe --stringparam file-name e-template 
-                 --stringparam path-name "" --output ..\site\e-template.html 
-    ..\stylesheets\html-perspective.xsl e-template.xml</pre>
+      <pre>xsltproc.exe --stringparam file-name e-template 
+             --stringparam path-name "" --output ..\site\e-template.html 
+..\stylesheets\html-perspective.xsl e-template.xml</pre>
       <sub-heading>PDF</sub-heading>
-      <pre>    xsltproc.exe --stringparam file-name e-template 
-                 --stringparam path-name ../ --stringparam fo-processor fop 
-    --output ..\site\pdf\e-template.fo ..\stylesheets\fo-perspective.xsl e-template.xml</pre>
+      <pre>xsltproc.exe --stringparam file-name e-template 
+             --stringparam path-name ../ --stringparam fo-processor fop 
+             --output ..\site\pdf\e-template.fo 
+..\stylesheets\fo-perspective.xsl e-template.xml</pre>
       <p>then</p>
-      <pre>    fop -c ../config/fop.xconf -fo ..\site\pdf\e-template.fo -pdf ..\site\pdf\e-template.pdf</pre>
+      <pre>fop -c ../config/fop.xconf -fo ..\site\pdf\e-template.fo 
+    -pdf ..\site\pdf\e-template.pdf</pre>
       <p>The variable <tt>path-name</tt> refers to the path to images/ from the output 
       directory: uses the Unix path syntax i.e. forward slash.</p>
       <sub-heading>Docbook</sub-heading>
-      <pre>    xsltproc.exe --output ..\docbook\e-template.xml
-    ..\stylesheets\dbk-perspective.xsl e-template.xml</pre>
+      <pre>xsltproc.exe --output ..\docbook\e-template.xml
+..\stylesheets\dbk-perspective.xsl e-template.xml</pre>
       <sub-heading>LICENSE&mdash;see <q>LICENSE</q></sub-heading>
-      <p>The license for this product (<q>LICENSE/q>) is fairly standard.
+      <p>The license for this product (<q>LICENSE</q>) is fairly standard.
       Modification of the software is at the user<apos/>s own risk, all derivative
       products must give proper attribution. <stop /></p>
    </body>
