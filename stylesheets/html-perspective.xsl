@@ -59,7 +59,7 @@
             <link type="text/css" rel="stylesheet" href="{$path-name}stylesheets/perspective.css"/>
             <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
             <xsl:comment>[if lt IE 9]&gt;
-    <![CDATA[<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY%" crossorigin=”anonymous”></script>]]>
+    <![CDATA[<script src="scripts/html5shiv.js"></script>]]>
     &lt;![endif]</xsl:comment>
          </head>
          <body style="padding: 60px 15px 0;">
@@ -1330,7 +1330,11 @@
 
    <xsl:template match="tbody/row/column | tfoot/row/column">
       <xsl:element name="td">
-         <xsl:attribute name="class">blockx</xsl:attribute>
+         <xsl:if test="@class=true()">
+            <xsl:attribute name="class">
+               <xsl:value-of select="@class"/>
+            </xsl:attribute>
+         </xsl:if>
          <xsl:attribute name="style"><!-- <xsl:text>padding: 2px 3px;</xsl:text> -->
          <!-- following ensures all entries have an alignment attribute, following a well-known flaw in
               the mozilla browser "Bug 915 - column alignment resolution for <col align> not implemented 
@@ -1355,7 +1359,11 @@
 
    <xsl:template match="thead/row/column">
       <xsl:element name="th">
-         <xsl:attribute name="class">blockx</xsl:attribute>
+         <xsl:if test="@class=true()">
+            <xsl:attribute name="class">
+               <xsl:value-of select="@class"/>
+            </xsl:attribute>
+         </xsl:if>
          <xsl:attribute name="style"><!-- <xsl:text>padding: 2px 3px;</xsl:text> -->
          <!-- following ensures all entries have an alignment attribute, following a well-known flaw in
               the mozilla browser "Bug 915 - column alignment resolution for <col align> not implemented 

@@ -144,10 +144,10 @@
          into, leaf through, skim, refine, enumerate, glean, synopsize, winnow the wheat 
          from the chaff and separate the sheep from the goats.</q></p>
          <pre>Literal text:
-         xsltproc.exe --stringparam file-name e-template 
-         --stringparam path-name ../ --stringparam fo-processor xep 
-         --output e-template.fo ..\stylesheets\fo-e-template.xsl 
-         e-template.xml</pre>
+    xsltproc.exe --stringparam file-name e-template 
+                 --stringparam path-name ../ --stringparam fo-processor fop 
+                 --output ..\site\pdf\e-template.fo 
+    ..\stylesheets\fo-perspective.xsl e-template.xml</pre>
          <p>We have table handling as demonstrated below:</p>
          <table>
             <label number="yes">An oil price series showing the expected cost of petrol based on 
@@ -167,83 +167,83 @@
                <columns number="11" width="77" align="right"/>
                <tbody>
                   <row valign="bottom">
-                     <column><b>Oil Price per barrel</b></column>
-                     <column>&dollar;32</column>
-                     <column>&dollar;34</column>
-                     <column>&dollar;36</column>
-                     <column>&dollar;38</column>
-                     <column>&dollar;40</column>
-                     <column>&dollar;42</column>
-                     <column>&dollar;44</column>
-                     <column>&dollar;46</column>
-                     <column>&dollar;48</column>
-                     <column>&dollar;50</column>
+                     <column class="tabularBodyText"><b>Oil Price per barrel</b></column>
+                     <column class="tabularBodyText">&dollar;32</column>
+                     <column class="tabularBodyText">&dollar;34</column>
+                     <column class="tabularBodyText">&dollar;36</column>
+                     <column class="tabularBodyText">&dollar;38</column>
+                     <column class="tabularBodyText">&dollar;40</column>
+                     <column class="tabularBodyText">&dollar;42</column>
+                     <column class="tabularBodyText">&dollar;44</column>
+                     <column class="tabularBodyText">&dollar;46</column>
+                     <column class="tabularBodyText">&dollar;48</column>
+                     <column class="tabularBodyText">&dollar;50</column>
                   </row>
                   <row valign="bottom">
-                     <column><sq>barrel</sq> of petrol<footnote>Price of 1 Barrel + &dollar;12.67</footnote></column>
-                     <column>&dollar;44.67</column>
-                     <column>&dollar;46.67</column>
-                     <column>&dollar;48.67</column>
-                     <column>&dollar;50.67</column>
-                     <column>&dollar;52.67</column>
-                     <column>&dollar;54.67</column>
-                     <column>&dollar;56.67</column>
-                     <column>&dollar;58.67</column>
-                     <column>&dollar;60.67</column>
-                     <column>&dollar;62.67</column>
+                     <column class="tabularBodyText"><sq>barrel</sq> of petrol<footnote>Price of 1 Barrel + &dollar;12.67</footnote></column>
+                     <column class="tabularBodyText">&dollar;44.67</column>
+                     <column class="tabularBodyText">&dollar;46.67</column>
+                     <column class="tabularBodyText">&dollar;48.67</column>
+                     <column class="tabularBodyText">&dollar;50.67</column>
+                     <column class="tabularBodyText">&dollar;52.67</column>
+                     <column class="tabularBodyText">&dollar;54.67</column>
+                     <column class="tabularBodyText">&dollar;56.67</column>
+                     <column class="tabularBodyText">&dollar;58.67</column>
+                     <column class="tabularBodyText">&dollar;60.67</column>
+                     <column class="tabularBodyText">&dollar;62.67</column>
                   </row>
                   <row valign="bottom">
-                     <column>per US Gallon</column>
-                     <column>&dollar;1.06</column>
-                     <column>&dollar;1.11</column>
-                     <column>&dollar;1.16</column>
-                     <column>&dollar;1.21</column>
-                     <column>&dollar;1.25</column>
-                     <column>&dollar;1.30</column>
-                     <column>&dollar;1.35</column>
-                     <column>&dollar;1.40</column>
-                     <column>&dollar;1.44</column>
-                     <column>&dollar;1.49</column>
+                     <column class="tabularBodyText">per US Gallon</column>
+                     <column class="tabularBodyText">&dollar;1.06</column>
+                     <column class="tabularBodyText">&dollar;1.11</column>
+                     <column class="tabularBodyText">&dollar;1.16</column>
+                     <column class="tabularBodyText">&dollar;1.21</column>
+                     <column class="tabularBodyText">&dollar;1.25</column>
+                     <column class="tabularBodyText">&dollar;1.30</column>
+                     <column class="tabularBodyText">&dollar;1.35</column>
+                     <column class="tabularBodyText">&dollar;1.40</column>
+                     <column class="tabularBodyText">&dollar;1.44</column>
+                     <column class="tabularBodyText">&dollar;1.49</column>
                   </row>
                   <row valign="bottom">
-                     <column>per litre</column>
-                     <column>&dollar;0.28</column>
-                     <column>&dollar;0.29</column>
-                     <column>&dollar;0.31</column>
-                     <column>&dollar;0.32</column>
-                     <column>&dollar;0.33</column>
-                     <column>&dollar;0.34</column>
-                     <column>&dollar;0.36</column>
-                     <column>&dollar;0.37</column>
-                     <column>&dollar;0.38</column>
-                     <column>&dollar;0.39</column>
+                     <column class="tabularBodyText">per litre</column>
+                     <column class="tabularBodyText">&dollar;0.28</column>
+                     <column class="tabularBodyText">&dollar;0.29</column>
+                     <column class="tabularBodyText">&dollar;0.31</column>
+                     <column class="tabularBodyText">&dollar;0.32</column>
+                     <column class="tabularBodyText">&dollar;0.33</column>
+                     <column class="tabularBodyText">&dollar;0.34</column>
+                     <column class="tabularBodyText">&dollar;0.36</column>
+                     <column class="tabularBodyText">&dollar;0.37</column>
+                     <column class="tabularBodyText">&dollar;0.38</column>
+                     <column class="tabularBodyText">&dollar;0.39</column>
                   </row>
                   <row valign="bottom">
-                     <column>GBP per litre<footnote>&dollar;1.61 to &pound;1</footnote>
+                     <column class="tabularBodyText">GBP per litre<footnote>&dollar;1.61 to &pound;1</footnote>
                      </column>
-                     <column>&pound;0.17</column>
-                     <column>&pound;0.18</column>
-                     <column>&pound;0.19</column>
-                     <column>&pound;0.20</column>
-                     <column>&pound;0.21</column>
-                     <column>&pound;0.21</column>
-                     <column>&pound;0.22</column>
-                     <column>&pound;0.23</column>
-                     <column>&pound;0.24</column>
-                     <column>&pound;0.24</column>
+                     <column class="tabularBodyText">&pound;0.17</column>
+                     <column class="tabularBodyText">&pound;0.18</column>
+                     <column class="tabularBodyText">&pound;0.19</column>
+                     <column class="tabularBodyText">&pound;0.20</column>
+                     <column class="tabularBodyText">&pound;0.21</column>
+                     <column class="tabularBodyText">&pound;0.21</column>
+                     <column class="tabularBodyText">&pound;0.22</column>
+                     <column class="tabularBodyText">&pound;0.23</column>
+                     <column class="tabularBodyText">&pound;0.24</column>
+                     <column class="tabularBodyText">&pound;0.24</column>
                   </row>
                   <row valign="bottom">
-                     <column><b>UK pump price per litre</b><footnote>(base price + excise duty @ &pound;0.5234) * VAT @ 17.5&percnt;</footnote></column>
-                     <column>&pound;0.82</column>
-                     <column>&pound;0.83</column>
-                     <column>&pound;0.84</column>
-                     <column>&pound;0.85</column>
-                     <column>&pound;0.86</column>
-                     <column>&pound;0.87</column>
-                     <column>&pound;0.88</column>
-                     <column>&pound;0.88</column>
-                     <column>&pound;0.89</column>
-                     <column>&pound;0.90</column>
+                     <column class="tabularBodyText"><b>UK pump price per litre</b><footnote>(base price + excise duty @ &pound;0.5234) * VAT @ 17.5&percnt;</footnote></column>
+                     <column class="tabularBodyText">&pound;0.82</column>
+                     <column class="tabularBodyText">&pound;0.83</column>
+                     <column class="tabularBodyText">&pound;0.84</column>
+                     <column class="tabularBodyText">&pound;0.85</column>
+                     <column class="tabularBodyText">&pound;0.86</column>
+                     <column class="tabularBodyText">&pound;0.87</column>
+                     <column class="tabularBodyText">&pound;0.88</column>
+                     <column class="tabularBodyText">&pound;0.88</column>
+                     <column class="tabularBodyText">&pound;0.89</column>
+                     <column class="tabularBodyText">&pound;0.90</column>
                   </row>
                </tbody>
             </tgroup>

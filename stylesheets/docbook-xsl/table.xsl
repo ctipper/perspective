@@ -291,7 +291,11 @@
 
    <xsl:template match="db:tbody/db:row/db:entry | db:tfoot/db:row/db:entry">
       <xsl:element name="td">
-         <xsl:attribute name="class">blockx</xsl:attribute>
+         <xsl:if test="@condition=true()">
+            <xsl:attribute name="class">
+               <xsl:value-of select="@condition"/>
+            </xsl:attribute>
+         </xsl:if>
          <xsl:attribute name="style"><!-- <xsl:text>padding: 2px 3px;</xsl:text> -->
          <!-- following ensures all entries have an alignment attribute, following a well-known flaw in
               the mozilla browser "Bug 915 - column alignment resolution for <col align> not implemented 
@@ -331,14 +335,11 @@
 
    <xsl:template match="db:thead/db:row/db:entry">
       <xsl:element name="th">
-         <xsl:choose>
-            <xsl:when test="@condition=true()">
-               <xsl:attribute name="class"><xsl:value-of select="@condition"/></xsl:attribute>
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:attribute name="class">blockx</xsl:attribute>
-            </xsl:otherwise>
-         </xsl:choose>
+         <xsl:if test="@condition=true()">
+            <xsl:attribute name="class">
+               <xsl:value-of select="@condition"/>
+            </xsl:attribute>
+         </xsl:if>
          <xsl:attribute name="style"><!-- <xsl:text>padding: 2px 3px;</xsl:text> -->
          <!-- following ensures all entries have an alignment attribute, following a well-known flaw in
               the mozilla browser "Bug 915 - column alignment resolution for <col align> not implemented 

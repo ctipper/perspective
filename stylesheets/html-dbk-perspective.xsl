@@ -79,7 +79,7 @@
             <link type="text/css" rel="stylesheet" title="Classic theme" href="{$path-name}stylesheets/perspective.css"/>
             <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
             <xsl:comment>[if lt IE 9]&gt;
-    <![CDATA[<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY%" crossorigin=”anonymous”></script>]]>
+    <![CDATA[<script src="scripts/html5shiv.js"></script>]]>
     &lt;![endif]</xsl:comment>
          </head>
          <body style="padding: 15px;">

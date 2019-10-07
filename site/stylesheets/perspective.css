@@ -226,7 +226,7 @@ h4 {
 .thead {
   font-weight: bold;
   color: black;
-  background-color: var(--gray-400);
+  background-color: white;
 }
 
 .tfoot {
@@ -239,7 +239,7 @@ h4 {
 }
 
 .odd {
-  background-color: var(--gray-300);
+  background-color: white;
 }
 
 .even {
