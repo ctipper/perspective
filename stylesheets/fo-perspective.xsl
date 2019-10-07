@@ -72,10 +72,11 @@
    <xsl:param name="font.copyright.size">9pt</xsl:param>
    <xsl:param name="font.heading1.size">20pt</xsl:param>
    <xsl:param name="font.heading1.height">120%</xsl:param>
+   <xsl:param name="font.heading1.before">6pt</xsl:param>
    <xsl:param name="font.heading1.after">6pt</xsl:param>
    <xsl:param name="font.heading2.size">14pt</xsl:param>
    <xsl:param name="font.heading2.height">120%</xsl:param>
-   <xsl:param name="font.heading2.before">6pt</xsl:param>
+   <xsl:param name="font.heading2.before">3pt</xsl:param>
    <xsl:param name="font.heading2.after">3pt</xsl:param>
    <xsl:param name="font.heading3.size">12pt</xsl:param>
    <xsl:param name="font.heading3.height">120%</xsl:param>
@@ -445,6 +446,7 @@
       <fo:block font-family="{$font.family.sans}"
                 font-size="{$font.heading1.size}"
                 line-height="{$font.heading1.height}"
+                space-before="{$font.heading1.before}"
                 space-after="{$font.heading1.after}">
          <xsl:if test="parent::section">
             <xsl:call-template name="sect-number"/>

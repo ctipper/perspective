@@ -39,10 +39,20 @@
          <xsl:if test="(child::db:revhistory) and ($media='screen')">
             <xsl:apply-templates select="db:revhistory"/>
          </xsl:if>
-         <xsl:if test="ancestor::db:article/descendant::db:sect1">
-            <xsl:call-template name="table-of-contents"/>
-            <hr class="dashed"><xsl:text> </xsl:text></hr>
-         </xsl:if>
+         <xsl:choose>
+            <xsl:when test="parent::db:article/descendant::db:sect1">
+               <xsl:call-template name="table-of-contents">
+                  <xsl:with-param name="section">sect1</xsl:with-param>
+               </xsl:call-template>
+               <hr class="dashed"><xsl:text> </xsl:text></hr>
+            </xsl:when>
+            <xsl:when test="parent::db:article/descendant::db:section">
+               <xsl:call-template name="table-of-contents">
+                  <xsl:with-param name="section">section</xsl:with-param>
+               </xsl:call-template>
+               <hr class="dashed"><xsl:text> </xsl:text></hr>
+            </xsl:when>
+         </xsl:choose>
       </header>
    </xsl:template>
 
@@ -289,22 +299,45 @@
    </xsl:template>
 
    <xsl:template name="table-of-contents">
-      <h3>Contents</h3>
-      <xsl:for-each select="//db:sect1/descendant-or-self::db:title[1]">
-         <p>
-            <xsl:element name="a">
-               <xsl:attribute name="href">
-                  <xsl:if test="parent::db:info">
-                     <xsl:value-of select="$site-url"/>
-                     <xsl:value-of select="$file-name"/><xsl:text>.html</xsl:text>
-                  </xsl:if>
-                  <xsl:text>#</xsl:text>
-                  <xsl:value-of select="ancestor::db:sect1[1]/attribute::xml:id"/>
-               </xsl:attribute>
-               <xsl:apply-templates/>
-            </xsl:element>
-         </p>
-      </xsl:for-each>
+      <xsl:param name="section">sect1</xsl:param>
+      <xsl:choose>
+         <xsl:when test="string($section)='sect1'">
+            <h3>Contents</h3>
+            <xsl:for-each select="//db:sect1/descendant-or-self::db:title[1]">
+               <p>
+                  <xsl:element name="a">
+                     <xsl:attribute name="href">
+                        <xsl:if test="parent::db:info">
+                           <xsl:value-of select="$site-url"/>
+                           <xsl:value-of select="$file-name"/><xsl:text>.html</xsl:text>
+                        </xsl:if>
+                        <xsl:text>#</xsl:text>
+                        <xsl:value-of select="ancestor::db:sect1[1]/attribute::xml:id"/>
+                     </xsl:attribute>
+                     <xsl:apply-templates/>
+                  </xsl:element>
+               </p>
+            </xsl:for-each>
+         </xsl:when>
+         <xsl:when test="string($section)='section'">
+            <h3>Contents</h3>
+            <xsl:for-each select="//db:section/descendant-or-self::db:title[1]">
+               <p>
+                  <xsl:element name="a">
+                     <xsl:attribute name="href">
+                        <xsl:if test="parent::db:info">
+                           <xsl:value-of select="$site-url"/>
+                           <xsl:value-of select="$file-name"/><xsl:text>.html</xsl:text>
+                        </xsl:if>
+                        <xsl:text>#</xsl:text>
+                        <xsl:value-of select="ancestor::db:section[1]/attribute::xml:id"/>
+                     </xsl:attribute>
+                     <xsl:apply-templates/>
+                  </xsl:element>
+               </p>
+            </xsl:for-each>
+         </xsl:when>
+      </xsl:choose>
    </xsl:template>
    
 </xsl:stylesheet>
