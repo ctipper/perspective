@@ -82,6 +82,20 @@ pack .l.scroll -side right -fill y
 pack .l.log -side left -fill both -expand true
 pack .l -side top -fill both -expand true
 
+# xsltproc has a long-standing bug accessing external entities for file names
+# containing spaces e.g. https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=516916
+
+# Encode all except "unreserved" characters; use UTF-8 for extended chars.
+# See http://tools.ietf.org/html/rfc3986 §2.4 and §2.5
+# https://www.rosettacode.org/wiki/URL_encoding#Tcl
+
+proc urlEncode {str} {
+    set uStr [encoding convertto utf-8 $str]
+    set chRE {[^-A-Za-z0-9._~\n]};		# Newline is special case!
+    set replacement {%[format "%02X" [scan "\\\0" "%c"]]}
+    return [string map {"\n" "%0A"} [subst [regsub -all $chRE $uStr $replacement]]]
+}
+
 # Browse for XML file
 
 proc Browse {} {
@@ -223,7 +237,7 @@ proc XsltWeb {} {
     if [catch {exec xsltproc --stringparam file-name $thisdoc \
                    --stringparam path-name "" \
                    --output [file join ../site $thisdoc.html] \
-                   ../stylesheets/html-dbk-perspective.xsl [file join ../docbook $thisdoc.xml]} result] {
+                   ../stylesheets/html-dbk-perspective.xsl [file join ../docbook [urlEncode $thisdoc].xml]} result] {
         $log insert end $result\n
     } else {
         $log insert end "Your DocBook document is transformed to Web.\n"

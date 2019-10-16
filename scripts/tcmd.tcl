@@ -22,6 +22,20 @@
 # local path settings
 set path "$::env(HOME)/Applications"
 
+# xsltproc has a long-standing bug accessing external entities for file names
+# containing spaces e.g. https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=516916
+
+# Encode all except "unreserved" characters; use UTF-8 for extended chars.
+# See http://tools.ietf.org/html/rfc3986 §2.4 and §2.5
+# https://www.rosettacode.org/wiki/URL_encoding#Tcl
+
+proc urlEncode {str} {
+    set uStr [encoding convertto utf-8 $str]
+    set chRE {[^-A-Za-z0-9._~\n]};		# Newline is special case!
+    set replacement {%[format "%02X" [scan "\\\0" "%c"]]}
+    return [string map {"\n" "%0A"} [subst [regsub -all $chRE $uStr $replacement]]]
+}
+
 # Transform to Web
 
 proc XsltWeb {stylesheet pathname} {
@@ -29,7 +43,7 @@ proc XsltWeb {stylesheet pathname} {
     if [catch {exec xsltproc --stringparam file-name $filename \
                    --stringparam path-name $pathname \
                    --output ../site/$filename.html \
-                   ../stylesheets/$stylesheet.xsl ../docbook/$filename.xml} result] {
+                   ../stylesheets/$stylesheet.xsl ../docbook/[urlEncode $filename].xml} result] {
         puts stdout $result
     } else {
         puts stdout "Your DocBook document: $filename is transformed to Web."
@@ -43,7 +57,7 @@ proc XsltHtml {stylesheet pathname} {
     if [catch {exec xsltproc --stringparam file-name $filename \
                    --stringparam path-name $pathname \
                    --output ../site/$filename.htm \
-                   ../stylesheets/$stylesheet.xsl ../xml/$filename.xml} result] {
+                   ../stylesheets/$stylesheet.xsl ../xml/[urlEncode $filename].xml} result] {
         puts stdout $result
     } else {
         puts stdout "Your document is transformed to HTML."
@@ -55,7 +69,7 @@ proc XsltHtml {stylesheet pathname} {
 proc XsltDocBook {stylesheet} {
     global filename
     if [catch {exec xsltproc --output ../docbook/$filename.xml \
-                   ../stylesheets/$stylesheet.xsl ../xml/$filename.xml} result] {
+                   ../stylesheets/$stylesheet.xsl ../xml/[urlEncode $filename].xml} result] {
         puts stdout $result
     } else {
         puts stdout "Your document is transformed to DocBook DTD."
@@ -71,7 +85,7 @@ proc XsltFO {stylesheet pathname renderer} {
                    --stringparam fo-processor $renderer \
                    --stringparam dropped-caps no \
                    --output ../site/pdf/$filename.fo \
-                   ../stylesheets/$stylesheet.xsl ../xml/$filename.xml} result] {
+                   ../stylesheets/$stylesheet.xsl ../xml/[urlEncode $filename].xml} result] {
         puts stdout $result
     } else {
         puts stdout "Your document is transformed to Formatting-Objects."
