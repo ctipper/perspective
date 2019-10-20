@@ -43,12 +43,10 @@ A workflow can be defined as follows:
 
 ## Notes:
 
-The supplied Tcl scripts use xsltproc and trang validator. [^1] You may use
-GNOME libxml to process the pages. See your operating system
-documentation. Libxml2 is bundled by default on macOS.
+The supplied Tcl scripts use xsltproc and [jing](https://github.com/relaxng/jing-trang) validator. You may use
+GNOME libxml2 to process the pages. Libxml2 is bundled by default on macOS versions are available for other OS linked from <http://xmlsoft.org/>
 
-[^1]: A Tcl/Tk GUI is also provided to control document transformations after
-the markup has been produced.
+![tx.tcl](site/images/200dpi/tx-1.jpg?raw=true "A Tcl/Tk GUI is also provided to control document transformations after the markup has been produced.")
 
 To produce PDF you will need a FO renderer, such as
 [Apache FOP](https://xmlgraphics.apache.org/fop/) Installation is somewhat

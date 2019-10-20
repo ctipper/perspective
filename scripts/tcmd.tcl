@@ -130,7 +130,7 @@ proc XsltPDF {} {
 
 proc XmlValidate {schema} {
     global filename path
-    if [catch {exec java -jar $path/trang/jing.jar $schema ../xml/$filename.xml} result] {
+    if [catch {exec java -jar $path/jing/bin/jing.jar $schema ../xml/$filename.xml} result] {
         puts stdout $result
     } else {
         puts stdout "Your document is well-formed and validated."
@@ -141,7 +141,7 @@ proc XmlValidate {schema} {
 
 proc DocbookValidate {schema} {
     global filename path
-    if [catch {exec java -jar $path/trang/jing.jar $schema ../docbook/$filename.xml} result] {
+    if [catch {exec java -jar $path/jing/bin/jing.jar $schema ../docbook/$filename.xml} result] {
         puts stdout $result
     } else {
         puts stdout "Your document is well-formed and validated."
