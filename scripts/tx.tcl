@@ -216,7 +216,7 @@ proc XsltValidate {} {
     set schema [file join "../xml/dtd" perspective-schema.rng]
     set thisdoc [file tail $document]
     $log delete 1.0 end
-    if [catch {exec java -jar $path/trang/jing.jar $schema $thisdoc} result] {
+    if [catch {exec java -jar $path/jing/bin/jing.jar $schema $thisdoc} result] {
         $log insert end $result\n
     } else {
         $log insert end "Your document is well-formed and validated.\n"
