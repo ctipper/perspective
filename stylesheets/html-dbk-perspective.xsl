@@ -68,7 +68,6 @@
             <meta http_equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <title><xsl:apply-templates select="db:info/db:title" mode="header"/></title>
-            <meta charset="UTF-8" />
             <xsl:if test="db:info/child::db:author">
                <xsl:call-template name="authornames"/>
             </xsl:if>

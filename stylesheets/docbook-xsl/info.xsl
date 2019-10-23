@@ -255,23 +255,25 @@
    <!-- =============================================================== -->
 
    <xsl:template match="db:revhistory">
-      <div style="width: 600px; margin-left: auto; margin-right: auto;" id="revhistory">
-         <table class="tabular" style="width: 100%; margin: 0; text-align: left;">
-            <col style="width: 16.67%;" />
-            <col style="width: 83.33%;" />
-            <thead class="revision">
-               <tr>
-                  <th colspan="2" class="tabularhead">Revision History</th>
-               </tr>
-            </thead>
-            <tbody class="revision">
-               <tr> 
-                  <td class="tabularHeadText">Revision</td>
-                  <td class="tabularHeadText">Date</td>
-               </tr>
-               <xsl:apply-templates select="db:revision"/>
-            </tbody>
-         </table>
+      <div class="table-responsive">
+         <div style="width: 600px; margin-left: auto; margin-right: auto;" id="revhistory">
+            <table class="tabular" style="width: 100%; margin: 0; text-align: left;">
+               <col style="width: 16.67%;" />
+               <col style="width: 83.33%;" />
+               <thead class="revision">
+                  <tr>
+                     <th colspan="2" class="tabularhead">Revision History</th>
+                  </tr>
+               </thead>
+               <tbody class="revision">
+                  <tr>
+                     <td class="tabularHeadText">Revision</td>
+                     <td class="tabularHeadText">Date</td>
+                  </tr>
+                  <xsl:apply-templates select="db:revision"/>
+               </tbody>
+            </table>
+         </div>
       </div>
    </xsl:template>
 

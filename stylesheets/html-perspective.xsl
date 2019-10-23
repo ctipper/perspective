@@ -50,7 +50,6 @@
             <meta http_equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <title><xsl:apply-templates select="info/title" mode="heading"/></title>
-            <meta charset="UTF-8" />
             <xsl:apply-templates select="info/author" mode="heading"/>
             <xsl:apply-templates select="info/copyright" mode="heading"/>
             <xsl:apply-templates select="info/subtitle" mode="heading"/>
@@ -63,7 +62,7 @@
     &lt;![endif]</xsl:comment>
          </head>
          <body style="padding: 60px 15px 0;">
-            <article style="width: {$body.width}px;">
+            <article>
                <header>
                   <a id="top"><xsl:text> </xsl:text></a>
                   <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 50px; background-color: {$color.main};"><xsl:text> </xsl:text></div>
@@ -1122,25 +1121,27 @@
    <!-- =============================================================== -->
 
    <xsl:template match="revhistory">
-      <div style="width: 500px; margin-left: auto; margin-right: auto;" id="revhistory">
-         <table class="tabular" style="text-align: left;">
-            <colgroup>
-               <col style="width: 100px;" />
-               <col style="width: 400px;" />
-            </colgroup>
-            <thead class="revision">
-               <tr>
-                  <th colspan="2" class="tabularhead">Revision History</th>
-               </tr>
-            </thead>
-            <tbody class="revision">
-               <tr> 
-                  <td class="tabularHeadText">Revision</td>
-                  <td class="tabularHeadText">Date</td>
-               </tr>
-               <xsl:apply-templates select="revision"/>
-            </tbody>
-         </table>
+      <div class="table-responsive">
+         <div style="width: 500px; margin-left: auto; margin-right: auto;" id="revhistory">
+            <table class="tabular" style="text-align: left;">
+               <colgroup>
+                  <col style="width: 100px;" />
+                  <col style="width: 400px;" />
+               </colgroup>
+               <thead class="revision">
+                  <tr>
+                     <th colspan="2" class="tabularhead">Revision History</th>
+                  </tr>
+               </thead>
+               <tbody class="revision">
+                  <tr>
+                     <td class="tabularHeadText">Revision</td>
+                     <td class="tabularHeadText">Date</td>
+                  </tr>
+                  <xsl:apply-templates select="revision"/>
+               </tbody>
+            </table>
+         </div>
       </div>
    </xsl:template>
 
@@ -1188,10 +1189,14 @@
             </xsl:element>
          </xsl:when>
          <xsl:when test="@align=false()">
-            <xsl:apply-templates select="label"/>
-            <table class="table">
-               <xsl:apply-templates select="tgroup"/>
-            </table>
+            <div class="table-responsive">
+               <xsl:apply-templates select="label"/>
+               <xsl:element name="table">
+                  <xsl:attribute name="class">table</xsl:attribute>
+                  <xsl:attribute name="style">width: <xsl:apply-templates select="descendant::tgroup/columns" mode="sum"/>px;</xsl:attribute>
+                  <xsl:apply-templates select="tgroup"/>
+               </xsl:element>
+            </div>
          </xsl:when>
          <xsl:otherwise>
             <div style="float: {@align}; padding: 0px 5px;">

@@ -53,10 +53,14 @@
             </xsl:element>
          </xsl:when>
          <xsl:when test="@condition=false()">
-            <xsl:apply-templates select="db:title"/>
-            <table class="table">
-               <xsl:apply-templates select="db:tgroup"/>
-            </table>
+            <div class="table-responsive">
+               <xsl:apply-templates select="db:title"/>
+               <xsl:element name="table">
+                  <xsl:attribute name="class">table</xsl:attribute>
+                  <xsl:attribute name="style">width: <xsl:variable name="table_width"><xsl:apply-templates select="descendant::db:tgroup/db:colspec" mode="sum"/></xsl:variable><xsl:variable name="actual_width"><xsl:value-of select="format-number(number($table_width) * ($resolution div 2.54),'0')"/></xsl:variable><xsl:value-of select="$actual_width"/>px;</xsl:attribute>
+                  <xsl:apply-templates select="db:tgroup"/>
+               </xsl:element>
+            </div>
          </xsl:when>
          <xsl:otherwise>
             <div style="float: {@condition}; padding: 0px 10px;">
