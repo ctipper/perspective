@@ -246,7 +246,7 @@ h4 {
   background-color: white;
 }
 
-@media only screen and (max-width: 40.063em) {
+@media only screen and (max-width: 60em) {
 
   /* see by https://github.com/twbs/bootstrap/blob/master/scss/_tables.scss#L170 */
   .table-responsive {

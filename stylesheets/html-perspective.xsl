@@ -1193,7 +1193,11 @@
                <xsl:apply-templates select="label"/>
                <xsl:element name="table">
                   <xsl:attribute name="class">table</xsl:attribute>
-                  <xsl:attribute name="style">width: <xsl:apply-templates select="descendant::tgroup/columns" mode="sum"/>px;</xsl:attribute>
+                  <xsl:attribute name="style">
+                     <xsl:text>width: </xsl:text>
+                     <xsl:apply-templates select="descendant::tgroup/columns" mode="sum"/>
+                     <xsl:text>px;</xsl:text>
+                  </xsl:attribute>
                   <xsl:apply-templates select="tgroup"/>
                </xsl:element>
             </div>
@@ -1230,7 +1234,11 @@
    <xsl:template match="table/label">
       <xsl:element name="p">
          <xsl:attribute name="class">caption</xsl:attribute>
-         <xsl:attribute name="style">width: <xsl:apply-templates select="following-sibling::tgroup/columns" mode="sum"/>px;</xsl:attribute>
+         <xsl:attribute name="style">
+            <xsl:text>width: </xsl:text>
+            <xsl:apply-templates select="following-sibling::tgroup/columns" mode="sum"/>
+            <xsl:text>px;</xsl:text>
+         </xsl:attribute>
          <xsl:if test="@number='yes'">
             <b>Table <xsl:number level="any" count="//table/label[@number]" format="1"/></b>
             <xsl:text> </xsl:text>
