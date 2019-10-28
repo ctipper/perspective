@@ -1614,7 +1614,7 @@
 
    <!-- =============================================================== -->
    <!-- simple table handling with optional label and optional numbering -->
-   <!-- currently fop processor does not implement fo:table-and-caption -->
+   <!-- fop processor does not now support fo:table-and-caption, fo:float -->
    <!-- =============================================================== -->
 
    <xsl:template match="table">
@@ -1623,45 +1623,27 @@
             <xsl:variable name="table_width"><xsl:apply-templates select="descendant::tgroup/columns" mode="sum"/></xsl:variable>
             <xsl:variable name="actual_width"><xsl:value-of select="format-number(number($table_width) * (2.54 div $resolution),'0.000')"/></xsl:variable>
             <xsl:choose>
-               <xsl:when test="//table/label">
-                  <xsl:choose>
-                     <xsl:when test="$fo-processor='xep'">
-                        <xsl:element name="fo:block-container">
-                           <xsl:attribute name="width"><xsl:value-of select="$actual_width"/>cm</xsl:attribute>
-                           <xsl:attribute name="start-indent"><xsl:value-of select="format-number((number($body.width) - number($actual_width)) div 2,'0.000')"/>cm</xsl:attribute>
-                           <xsl:attribute name="margin">3pt 10pt</xsl:attribute>  <!-- padding -->
-                           <xsl:element name="fo:table-and-caption">
-                              <xsl:attribute name="keep-together">always</xsl:attribute>
-                              <xsl:attribute name="start-indent">0cm</xsl:attribute>
+               <xsl:when test="$fo-processor='xep'">
+                  <xsl:element name="fo:block-container">
+                     <xsl:attribute name="width"><xsl:value-of select="$actual_width"/>cm</xsl:attribute>
+                     <xsl:attribute name="start-indent"><xsl:value-of select="format-number((number($body.width) - number($actual_width)) div 2,'0.000')"/>cm</xsl:attribute>
+                     <xsl:attribute name="margin">3pt 10pt</xsl:attribute>  <!-- padding -->
+                     <xsl:element name="fo:table-and-caption">
+                        <xsl:attribute name="keep-together">always</xsl:attribute>
+                        <xsl:attribute name="start-indent">0cm</xsl:attribute>
+                        <xsl:choose>
+                           <xsl:when test="//table/label">
                               <xsl:call-template name="table-caption"/>
                               <xsl:call-template name="table-no-caption"/>
-                           </xsl:element>
-                        </xsl:element>
-                     </xsl:when>
-                     <xsl:when test="$fo-processor='fop'">
-                        <fo:table padding-before="0.5cm" padding-after="0.5cm" table-layout="fixed">
-                           <fo:table-column column-width="proportional-column-width(1)"/>
-                           <fo:table-column column-width="proportional-column-width(4)" />
-                           <fo:table-column column-width="proportional-column-width(1)"/>
-                           <fo:table-body>
-                              <fo:table-row>
-                                 <fo:table-cell>
-                                    <fo:block><xsl:text> </xsl:text></fo:block>
-                                 </fo:table-cell>
-                                 <fo:table-cell>
-                                    <xsl:apply-templates select="label"/>
-                                    <xsl:call-template name="table-no-caption"/>
-                                 </fo:table-cell>
-                                 <fo:table-cell>
-                                    <fo:block><xsl:text> </xsl:text></fo:block>
-                                 </fo:table-cell>
-                              </fo:table-row>
-                           </fo:table-body>
-                        </fo:table>
-                     </xsl:when>
-                  </xsl:choose>
+                           </xsl:when>
+                           <xsl:when test="not(//table/label)">
+                              <xsl:call-template name="table-no-caption"/>
+                           </xsl:when>
+                        </xsl:choose>
+                     </xsl:element>
+                  </xsl:element>
                </xsl:when>
-               <xsl:when test="not(//table/label)">
+               <xsl:when test="$fo-processor='fop'">
                   <fo:table padding-before="0.5cm" padding-after="0.5cm" table-layout="fixed">
                      <fo:table-column column-width="proportional-column-width(1)"/>
                      <fo:table-column column-width="proportional-column-width(4)" />
@@ -1672,7 +1654,15 @@
                               <fo:block><xsl:text> </xsl:text></fo:block>
                            </fo:table-cell>
                            <fo:table-cell>
-                              <xsl:call-template name="table-no-caption"/>
+                              <xsl:choose>
+                                 <xsl:when test="//table/label">
+                                    <xsl:apply-templates select="label"/>
+                                    <xsl:call-template name="table-no-caption"/>
+                                 </xsl:when>
+                                 <xsl:when test="not(//table/label)">
+                                    <xsl:call-template name="table-no-caption"/>
+                                 </xsl:when>
+                              </xsl:choose>
                            </fo:table-cell>
                            <fo:table-cell>
                               <fo:block><xsl:text> </xsl:text></fo:block>
@@ -1687,67 +1677,70 @@
             <xsl:element name="fo:block-container">
                <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
                <xsl:choose>
-                  <xsl:when test="//table/label">
-                     <xsl:choose>
-                        <xsl:when test="$fo-processor='xep'">
-                           <xsl:element name="fo:table-and-caption">
-                              <xsl:attribute name="keep-together">always</xsl:attribute>
+                  <xsl:when test="$fo-processor='xep'">
+                     <xsl:element name="fo:table-and-caption">
+                        <xsl:attribute name="keep-together">always</xsl:attribute>
+                        <xsl:choose>
+                           <xsl:when test="//table/label">
                               <xsl:call-template name="table-caption"/>
                               <xsl:call-template name="table-no-caption"/>
-                           </xsl:element>
-                        </xsl:when>
-                        <xsl:when test="$fo-processor='fop'">
+                           </xsl:when>
+                           <xsl:when test="not(//table/label)">
+                              <xsl:call-template name="table-no-caption"/>
+                           </xsl:when>
+                        </xsl:choose>
+                     </xsl:element>
+                  </xsl:when>
+                  <xsl:when test="$fo-processor='fop'">
+                     <xsl:choose>
+                        <xsl:when test="//table/label">
                            <xsl:apply-templates select="label"/>
                            <xsl:call-template name="table-no-caption"/>
                         </xsl:when>
+                        <xsl:when test="not(//table/label)">
+                           <xsl:call-template name="table-no-caption"/>
+                        </xsl:when>
                      </xsl:choose>
-                  </xsl:when>
-                  <xsl:when test="not(//table/label)">
-                     <xsl:call-template name="table-no-caption"/>
                   </xsl:when>
                </xsl:choose>
             </xsl:element>
          </xsl:when>
          <xsl:otherwise>
             <xsl:choose>
-               <xsl:when test="//table/label">
-                  <xsl:choose>
-                     <xsl:when test="$fo-processor='xep'">
-                        <xsl:element name="fo:float">
-                           <xsl:attribute name="float"><xsl:value-of select="@align"/></xsl:attribute>
-                           <xsl:attribute name="clear"><xsl:value-of select="@align"/></xsl:attribute>
-                           <xsl:element name="fo:block-container">
-                              <xsl:attribute name="margin">3pt 10pt</xsl:attribute>   <!-- padding -->
-                              <xsl:element name="fo:table-and-caption">
-                                 <xsl:attribute name="keep-together">always</xsl:attribute>
+               <xsl:when test="$fo-processor='xep'">
+                  <xsl:element name="fo:float">
+                     <xsl:attribute name="float"><xsl:value-of select="@align"/></xsl:attribute>
+                     <xsl:attribute name="clear"><xsl:value-of select="@align"/></xsl:attribute>
+                     <xsl:element name="fo:block-container">
+                        <xsl:attribute name="margin">3pt 10pt</xsl:attribute>   <!-- padding -->
+                        <xsl:element name="fo:table-and-caption">
+                           <xsl:attribute name="keep-together">always</xsl:attribute>
+                           <xsl:choose>
+                              <xsl:when test="//table/label">
                                  <xsl:call-template name="table-caption"/>
                                  <xsl:call-template name="table-no-caption"/>
-                              </xsl:element>
-                           </xsl:element>
+                              </xsl:when>
+                              <xsl:when test="not(//table/label)">
+                                 <xsl:call-template name="table-no-caption"/>
+                              </xsl:when>
+                           </xsl:choose>
                         </xsl:element>
-                     </xsl:when>
-                     <xsl:when test="$fo-processor='fop'">
-                        <xsl:apply-templates select="label"/>
-                        <xsl:call-template name="table-no-caption"/>
-                     </xsl:when>
-                  </xsl:choose>
+                     </xsl:element>
+                  </xsl:element>
                </xsl:when>
-               <xsl:when test="not(//table/label)">
-                  <xsl:choose>
-                     <xsl:when test="$fo-processor='xep'">
-                        <xsl:element name="fo:float">
-                           <xsl:attribute name="float"><xsl:value-of select="@align"/></xsl:attribute>
-                           <xsl:attribute name="clear"><xsl:value-of select="@align"/></xsl:attribute>
-                           <xsl:element name="fo:block-container">
-                              <xsl:attribute name="margin">3pt 10pt</xsl:attribute>   <!-- padding -->
-                              <xsl:call-template name="table-no-caption"/>
-                           </xsl:element>
-                        </xsl:element>
-                     </xsl:when>
-                     <xsl:when test="$fo-processor='fop'">
-                        <xsl:call-template name="table-no-caption"/>
-                     </xsl:when>
-                  </xsl:choose>
+               <xsl:when test="$fo-processor='fop'">
+                  <xsl:element name="fo:block-container">
+                     <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
+                     <xsl:choose>
+                        <xsl:when test="//table/label">
+                           <xsl:apply-templates select="label"/>
+                           <xsl:call-template name="table-no-caption"/>
+                        </xsl:when>
+                        <xsl:when test="not(//table/label)">
+                           <xsl:call-template name="table-no-caption"/>
+                        </xsl:when>
+                     </xsl:choose>
+                  </xsl:element>
                </xsl:when>
             </xsl:choose>
          </xsl:otherwise>
