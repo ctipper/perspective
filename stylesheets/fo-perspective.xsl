@@ -1487,70 +1487,73 @@
                                                                         -->
 
    <xsl:template match="revhistory">
-      <fo:table padding-before="0.5cm" padding-after="0.5cm" table-layout="fixed">
-         <fo:table-column column-width="proportional-column-width(1)"/>
-         <fo:table-column column-width="proportional-column-width(4)" />
-         <fo:table-column column-width="proportional-column-width(1)"/>
-         <fo:table-body>
-            <fo:table-row>
-               <fo:table-cell>
-                  <fo:block><xsl:text> </xsl:text></fo:block>
-               </fo:table-cell>
-               <fo:table-cell>
-                  <fo:table table-layout="fixed">
-                     <fo:table-column column-number="1" column-width="proportional-column-width(1)" text-align="left"/>
-                     <fo:table-column column-number="2" column-width="proportional-column-width(5)" text-align="left"/>
-                     <fo:table-header>
-                        <fo:table-row height="{number(substring-before($font.table.height,'pt')) + 4}pt"
-                                      color="black">
-                           <fo:table-cell number-columns-spanned="2"
-                                          text-align="center"
-                                          display-align="center"
-                                          border-width="0px"
-                                          border-top-width="0.5pt"
-                                          border-bottom-width="0.5pt"
-                                          border-style="solid"
-                                          border-color="black">
-                              <fo:block font-family="{$font.family.serif}"
-                                        font-size="{$font.table.size}"
-                                        line-height="{$font.table.height}"
-                                        font-weight="bold">Revision History</fo:block>
-                           </fo:table-cell>
-                        </fo:table-row>
-                     </fo:table-header>
-                     <fo:table-body>
-                        <fo:table-row height="{number(substring-before($font.table.height,'pt')) + 4}pt">
-                           <fo:table-cell text-align="left"
-                                          display-align="center"
-                                          border-width="0px"
-                                          border-bottom-width="0.5pt"
-                                          border-style="solid"
-                                          border-color="black">
-                              <fo:block font-family="{$font.family.serif}"
-                                        font-size="{$font.table.size}"
-                                        line-height="{$font.table.height}">Revision</fo:block>
-                           </fo:table-cell>
-                           <fo:table-cell text-align="left"
-                                          display-align="center"
-                                          border-width="0px"
-                                          border-bottom-width="0.5pt"
-                                          border-style="solid"
-                                          border-color="black">
-                              <fo:block font-family="{$font.family.serif}"
-                                        font-size="{$font.table.size}"
-                                        line-height="{$font.table.height}">Date</fo:block>
-                           </fo:table-cell>
-                        </fo:table-row>
-                        <xsl:apply-templates select="revision"/>
-                     </fo:table-body>
-                  </fo:table>
-               </fo:table-cell>
-               <fo:table-cell>
-                  <fo:block><xsl:text> </xsl:text></fo:block>
-               </fo:table-cell>
-            </fo:table-row>
-         </fo:table-body>
-      </fo:table> 
+      <xsl:element name="fo:block-container">
+         <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
+         <fo:table table-layout="fixed">
+            <fo:table-column column-width="proportional-column-width(1)"/>
+            <fo:table-column column-width="proportional-column-width(4)" />
+            <fo:table-column column-width="proportional-column-width(1)"/>
+            <fo:table-body>
+               <fo:table-row>
+                  <fo:table-cell>
+                     <fo:block><xsl:text> </xsl:text></fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell>
+                     <fo:table table-layout="fixed">
+                        <fo:table-column column-number="1" column-width="proportional-column-width(1)" text-align="left"/>
+                        <fo:table-column column-number="2" column-width="proportional-column-width(5)" text-align="left"/>
+                        <fo:table-header>
+                           <fo:table-row height="{number(substring-before($font.table.height,'pt')) + 4}pt"
+                                         color="black">
+                              <fo:table-cell number-columns-spanned="2"
+                                             text-align="center"
+                                             display-align="center"
+                                             border-width="0px"
+                                             border-top-width="0.5pt"
+                                             border-bottom-width="0.5pt"
+                                             border-style="solid"
+                                             border-color="black">
+                                 <fo:block font-family="{$font.family.serif}"
+                                           font-size="{$font.table.size}"
+                                           line-height="{$font.table.height}"
+                                           font-weight="bold">Revision History</fo:block>
+                              </fo:table-cell>
+                           </fo:table-row>
+                        </fo:table-header>
+                        <fo:table-body>
+                           <fo:table-row height="{number(substring-before($font.table.height,'pt')) + 4}pt">
+                              <fo:table-cell text-align="left"
+                                             display-align="center"
+                                             border-width="0px"
+                                             border-bottom-width="0.5pt"
+                                             border-style="solid"
+                                             border-color="black">
+                                 <fo:block font-family="{$font.family.serif}"
+                                           font-size="{$font.table.size}"
+                                           line-height="{$font.table.height}">Revision</fo:block>
+                              </fo:table-cell>
+                              <fo:table-cell text-align="left"
+                                             display-align="center"
+                                             border-width="0px"
+                                             border-bottom-width="0.5pt"
+                                             border-style="solid"
+                                             border-color="black">
+                                 <fo:block font-family="{$font.family.serif}"
+                                           font-size="{$font.table.size}"
+                                           line-height="{$font.table.height}">Date</fo:block>
+                              </fo:table-cell>
+                           </fo:table-row>
+                           <xsl:apply-templates select="revision"/>
+                        </fo:table-body>
+                     </fo:table>
+                  </fo:table-cell>
+                  <fo:table-cell>
+                     <fo:block><xsl:text> </xsl:text></fo:block>
+                  </fo:table-cell>
+               </fo:table-row>
+            </fo:table-body>
+         </fo:table>
+      </xsl:element>
    </xsl:template>
 
    <xsl:template match="revision">
@@ -1644,32 +1647,35 @@
                   </xsl:element>
                </xsl:when>
                <xsl:when test="$fo-processor='fop'">
-                  <fo:table padding-before="0.5cm" padding-after="0.5cm" table-layout="fixed">
-                     <fo:table-column column-width="proportional-column-width(1)"/>
-                     <fo:table-column column-width="proportional-column-width(4)" />
-                     <fo:table-column column-width="proportional-column-width(1)"/>
-                     <fo:table-body>
-                        <fo:table-row>
-                           <fo:table-cell>
-                              <fo:block><xsl:text> </xsl:text></fo:block>
-                           </fo:table-cell>
-                           <fo:table-cell>
-                              <xsl:choose>
-                                 <xsl:when test="//table/label">
-                                    <xsl:apply-templates select="label"/>
-                                    <xsl:call-template name="table-no-caption"/>
-                                 </xsl:when>
-                                 <xsl:when test="not(//table/label)">
-                                    <xsl:call-template name="table-no-caption"/>
-                                 </xsl:when>
-                              </xsl:choose>
-                           </fo:table-cell>
-                           <fo:table-cell>
-                              <fo:block><xsl:text> </xsl:text></fo:block>
-                           </fo:table-cell>
-                        </fo:table-row>
-                     </fo:table-body>
-                  </fo:table>
+                  <xsl:element name="fo:block-container">
+                     <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
+                     <fo:table table-layout="fixed">
+                        <fo:table-column column-width="proportional-column-width(1)"/>
+                        <fo:table-column column-width="proportional-column-width(4)" />
+                        <fo:table-column column-width="proportional-column-width(1)"/>
+                        <fo:table-body>
+                           <fo:table-row>
+                              <fo:table-cell>
+                                 <fo:block><xsl:text> </xsl:text></fo:block>
+                              </fo:table-cell>
+                              <fo:table-cell>
+                                 <xsl:choose>
+                                    <xsl:when test="//table/label">
+                                       <xsl:apply-templates select="label"/>
+                                       <xsl:call-template name="table-no-caption"/>
+                                    </xsl:when>
+                                    <xsl:when test="not(//table/label)">
+                                       <xsl:call-template name="table-no-caption"/>
+                                    </xsl:when>
+                                 </xsl:choose>
+                              </fo:table-cell>
+                              <fo:table-cell>
+                                 <fo:block><xsl:text> </xsl:text></fo:block>
+                              </fo:table-cell>
+                           </fo:table-row>
+                        </fo:table-body>
+                     </fo:table>
+                  </xsl:element>
                </xsl:when>
             </xsl:choose>
          </xsl:when>
