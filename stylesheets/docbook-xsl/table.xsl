@@ -34,23 +34,25 @@
    <xsl:template match="db:table | db:informaltable">
       <xsl:choose>
          <xsl:when test="@condition='center'">
-            <xsl:element name="div">
-               <xsl:attribute name="style">
-                  <xsl:text>width: </xsl:text>
-                  <xsl:variable name="table_width">
-                     <xsl:apply-templates select="descendant::db:tgroup/db:colspec" mode="sum"/>
-                  </xsl:variable>
-                  <xsl:variable name="actual_width">
-                     <xsl:value-of select="format-number(number($table_width) * ($resolution div 2.54),'0')"/>
-                  </xsl:variable>
-                  <xsl:value-of select="$actual_width"/><xsl:text>px;</xsl:text>
-                  <xsl:text> margin-left: auto; margin-right: auto;</xsl:text>
-               </xsl:attribute>
-               <xsl:apply-templates select="db:title"/>
-               <table class="table">
-                  <xsl:apply-templates select="db:tgroup"/>
-               </table>
-            </xsl:element>
+            <div class="table-responsive">
+               <xsl:element name="div">
+                  <xsl:attribute name="style">
+                     <xsl:text>width: </xsl:text>
+                     <xsl:variable name="table_width">
+                        <xsl:apply-templates select="descendant::db:tgroup/db:colspec" mode="sum"/>
+                     </xsl:variable>
+                     <xsl:variable name="actual_width">
+                        <xsl:value-of select="format-number(number($table_width) * ($resolution div 2.54),'0')"/>
+                     </xsl:variable>
+                     <xsl:value-of select="$actual_width"/><xsl:text>px;</xsl:text>
+                     <xsl:text> margin-left: auto; margin-right: auto;</xsl:text>
+                  </xsl:attribute>
+                  <xsl:apply-templates select="db:title"/>
+                  <table class="table">
+                     <xsl:apply-templates select="db:tgroup"/>
+                  </table>
+               </xsl:element>
+            </div>
          </xsl:when>
          <xsl:when test="@condition=false()">
             <div class="table-responsive">

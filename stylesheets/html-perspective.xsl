@@ -1175,18 +1175,20 @@
    <xsl:template match="table">
       <xsl:choose>
          <xsl:when test="@align='center'">
-            <xsl:element name="div">
-               <xsl:attribute name="style">
-                  <xsl:text>width: </xsl:text>
-                  <xsl:apply-templates select="descendant::tgroup/columns" mode="sum"/>
-                  <xsl:text>px;</xsl:text>
-                  <xsl:text> margin-left: auto; margin-right: auto;</xsl:text>
-               </xsl:attribute>
-               <xsl:apply-templates select="label"/>
-               <table class="table">
-                  <xsl:apply-templates select="tgroup"/>
-               </table>
-            </xsl:element>
+            <div class="table-responsive">
+               <xsl:element name="div">
+                  <xsl:attribute name="style">
+                     <xsl:text>width: </xsl:text>
+                     <xsl:apply-templates select="descendant::tgroup/columns" mode="sum"/>
+                     <xsl:text>px;</xsl:text>
+                     <xsl:text> margin-left: auto; margin-right: auto;</xsl:text>
+                  </xsl:attribute>
+                  <xsl:apply-templates select="label"/>
+                  <table class="table">
+                     <xsl:apply-templates select="tgroup"/>
+                  </table>
+               </xsl:element>
+            </div>
          </xsl:when>
          <xsl:when test="@align=false()">
             <div class="table-responsive">

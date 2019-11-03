@@ -240,7 +240,7 @@
 
    <xsl:template match="db:author/db:affiliation"><xsl:apply-templates/></xsl:template>
 
-   <xsl:template match="db:email">&lt;<a href="mailto:{.}"><xsl:apply-templates/></a>&gt;</xsl:template>
+   <xsl:template match="db:email">&lt;<a href="mailto:{$email-address}"><xsl:value-of select="$email-address"/></a>&gt;</xsl:template>
 
    <xsl:template match="db:info/db:copyright/db:year">
       <xsl:apply-templates/>
