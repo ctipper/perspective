@@ -258,17 +258,19 @@
       <div class="table-responsive">
          <div style="width: 600px; margin-left: auto; margin-right: auto;" id="revhistory">
             <table class="tabular" style="width: 100%; margin: 0; text-align: left;">
-               <col style="width: 16.67%;" />
-               <col style="width: 83.33%;" />
+               <colgroup>
+                  <col style="width: 16.67%;" />
+                  <col style="width: 83.33%;" />
+               </colgroup>
                <thead class="revision">
                   <tr>
-                     <th colspan="2" class="tabularhead">Revision History</th>
+                     <th colspan="2" class="table-header">Revision History</th>
                   </tr>
                </thead>
                <tbody class="revision">
                   <tr>
-                     <td class="tabularHeadText">Revision</td>
-                     <td class="tabularHeadText">Date</td>
+                     <td class="table-head">Revision</td>
+                     <td class="table-head">Date</td>
                   </tr>
                   <xsl:apply-templates select="db:revision"/>
                </tbody>
@@ -279,12 +281,12 @@
 
    <xsl:template match="db:revision">
       <tr>
-         <td class="tabularBodyText"><xsl:apply-templates select="db:revnumber"/></td>
-         <td class="tabularBodyText"><xsl:apply-templates select="db:date"/></td>
+         <td class="table-cell"><xsl:apply-templates select="db:revnumber"/></td>
+         <td class="table-cell"><xsl:apply-templates select="db:date"/></td>
       </tr>
       <tr>
-         <td class="tabularBodyText"><xsl:text> </xsl:text></td>
-         <td class="tabularBodyText"><xsl:apply-templates select="db:revremark"/></td>
+         <td class="table-cell"><xsl:text> </xsl:text></td>
+         <td class="table-cell"><xsl:apply-templates select="db:revremark"/></td>
       </tr>
    </xsl:template>
 

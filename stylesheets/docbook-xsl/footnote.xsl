@@ -134,7 +134,7 @@
    <xsl:template match="db:para" mode="endnotes">
       <xsl:element name="p">    
          <xsl:if test="ancestor::db:entry">
-            <xsl:attribute name="class">blockxx</xsl:attribute>
+            <xsl:attribute name="class">small</xsl:attribute>
          </xsl:if>
          <xsl:if test="position()=1">
             <a id="ftn.{generate-id(parent::db:footnote)}"><xsl:text> </xsl:text></a>

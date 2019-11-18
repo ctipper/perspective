@@ -251,8 +251,7 @@
                <xsl:apply-templates/>
             </section>
             <footer>
-               <a href="{$site-url}{$file-name}.html#{@xml:id}"
-                  class="blockxx">Permalink</a>
+               <a href="{$site-url}{$file-name}.html#{@xml:id}" class="small">Permalink</a>
             </footer>
             <xsl:if test="not(position()=last())">
                <hr><xsl:text> </xsl:text></hr>
@@ -403,7 +402,7 @@
    </xsl:template>
 
    <xsl:template match="db:epigraph">
-      <div class="epigraph">
+      <div class="lead">
          <xsl:apply-templates select="db:para"/>
          <xsl:apply-templates select="db:attribution"/>
       </div>

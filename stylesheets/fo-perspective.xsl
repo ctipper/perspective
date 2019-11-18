@@ -549,13 +549,13 @@
             </xsl:otherwise>
          </xsl:choose>
          <xsl:choose>
-            <xsl:when test="@class='bodyTextItalic'">
+            <xsl:when test="@class='font-italic'">
                <xsl:attribute name="font-family"><xsl:value-of select="$font.family.serif"/></xsl:attribute>
                <xsl:attribute name="font-size"><xsl:value-of select="$font.body.size"/></xsl:attribute>
                <xsl:attribute name="font-style">italic</xsl:attribute>
                <xsl:attribute name="line-height"><xsl:value-of select="$font.body.height"/></xsl:attribute>
             </xsl:when>
-            <xsl:when test="@class='lightText'">
+            <xsl:when test="@class='text-muted'">
                <xsl:attribute name="font-family"><xsl:value-of select="$font.family.serif"/></xsl:attribute>
                <xsl:attribute name="color">#444444</xsl:attribute>
                <xsl:attribute name="line-height"><xsl:value-of select="$font.body.height"/></xsl:attribute>
@@ -579,7 +579,7 @@
                <xsl:attribute name="font-style">italic</xsl:attribute>
                <xsl:attribute name="line-height"><xsl:value-of select="$font.body.height"/></xsl:attribute>
             </xsl:when>
-            <xsl:when test="@class='Notice'">
+            <xsl:when test="@class='lead'">
                <xsl:attribute name="font-family"><xsl:value-of select="$font.family.sans"/></xsl:attribute>
                <xsl:attribute name="font-size"><xsl:value-of select="$font.heading3.size"/></xsl:attribute>
                <xsl:attribute name="line-height"><xsl:value-of select="$font.heading3.height"/></xsl:attribute>

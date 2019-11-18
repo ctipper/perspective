@@ -64,8 +64,7 @@ blockquote {
   margin: 0 0 1rem;
 }
 
-div.epigraph {
-  font-style: italic;
+div.lead {
   margin-top: 3pt;
   margin-bottom: 3pt;
   margin-left: 5px;
@@ -114,27 +113,23 @@ sub {
   line-height: 100%;
 }
 
-.lightText, .lightItalic, .text-muted {  
+.lightText, .lightTextItalic, .text-muted {
   color: var(--gray-600); 
 }
 
-.bodyTextItalic, .lightItalic { 
+.bodyTextItalic, .lightTextItalic, .blockItalic, .font-italic {
   font-style: italic; 
 }
 
-.blockText, .blockItalic, .blockLabel, .blockx, .blockxx {
+.blockText, .blockItalic, .blockLabel, .blockx, .small {
   font-family: var(--font-family-sans-serif);
-}
-
-.blockItalic {
-  font-style: italic;
 }
 
 .blockx {
   font-size: 0.9rem;
 }
 
-.blockxx {
+.small {
   font-size: 0.8rem;
 }
 
@@ -146,10 +141,10 @@ code {
   font-family: Symbol, fantasy;
 }
 
-h1, h2, h3, h4, .Notice, .date, .byline {  
+h1, h2, h3, h4, .lead, .date, .byline {
   margin-bottom: 0.5rem;
-  font-family: var(--font-family-serif);
-  font-weight: 400;
+  font-family: var(--font-family-sans-serif);
+  font-weight: 300;
   line-height: 1.2;
 }
 
@@ -173,7 +168,7 @@ h4 {
   font-size: 1.5rem;
 }
 
-.Notice, .lead {
+.lead {
   font-size: 1.414rem;
 }
 
@@ -271,21 +266,21 @@ h4 {
   border-collapse: collapse;
 }
 
-.tabularBodyText, .tabularHeadText {
+.table-cell, .table-head {
   font-size: 0.9rem;
   font-weight: normal;
   color: black;
 }
 
-.tabularBodyText, .tabularHeadText {
+.table-cell, .table-head {
   border-bottom: 1px solid var(--gray-300);
 }
 
-.tabularHeadText {
+.table-head {
   border-top: 1px solid var(gray-600);
 }
 
-.tabularhead {
+.table-header  {
   font-size: 0.9rem;
   font-weight: bold;
   text-align: center;

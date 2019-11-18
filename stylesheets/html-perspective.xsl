@@ -101,7 +101,7 @@
                <hr/>
             </article>
             <footer>
-               <p class="blockxx">
+               <p class="small">
                   <xsl:choose>
                      <xsl:when test="//info/copyright">
                         <xsl:text>Copyright © </xsl:text><xsl:apply-templates select="info/copyright/year"/><xsl:text> </xsl:text><xsl:apply-templates select="info/copyright/owner"/>
@@ -326,7 +326,7 @@
       <xsl:apply-templates select="bloginfo/date"/>
       <xsl:apply-templates select="bloginfo/title"/>
       <xsl:apply-templates/>
-      <a href="{$site-url}{$file-name}.htm#{@id}" class="blockxx">Permalink</a>
+      <a href="{$site-url}{$file-name}.htm#{@id}" class="small">Permalink</a>
       <xsl:if test="position()!=last()">
          <hr/>
          <div align="right" class="blockLabel">
@@ -775,7 +775,7 @@
    </xsl:template>
 
    <xsl:template match="epigraph">
-      <div class="epigraph">
+      <div class="lead">
          <xsl:apply-templates/>
       </div>
    </xsl:template>
@@ -910,7 +910,7 @@
          <xsl:otherwise>
             <xsl:element name="p">
                <xsl:if test="parent::column">
-                  <xsl:attribute name="class">blockxx</xsl:attribute>
+                  <xsl:attribute name="class">small</xsl:attribute>
                </xsl:if>
                <xsl:call-template name="footnoten"/>
                <xsl:text>[</xsl:text>
@@ -942,7 +942,7 @@
    <xsl:template match="p" mode="endnotes">
       <xsl:element name="p">    
          <xsl:if test="ancestor::column">
-            <xsl:attribute name="class">blockxx</xsl:attribute>
+            <xsl:attribute name="class">small</xsl:attribute>
          </xsl:if>
          <xsl:if test="position()=1">
             <!-- footnoten with different id -->
@@ -1122,21 +1122,21 @@
 
    <xsl:template match="revhistory">
       <div class="table-responsive">
-         <div style="width: 500px; margin-left: auto; margin-right: auto;" id="revhistory">
-            <table class="tabular" style="text-align: left;">
+         <div style="width: 600px; margin-left: auto; margin-right: auto;" id="revhistory">
+            <table class="tabular" style="width: 100%; margin: 0; text-align: left;">
                <colgroup>
-                  <col style="width: 100px;" />
-                  <col style="width: 400px;" />
+                  <col style="width: 16.67%;" />
+                  <col style="width: 83.33%;" />
                </colgroup>
                <thead class="revision">
                   <tr>
-                     <th colspan="2" class="tabularhead">Revision History</th>
+                     <th colspan="2" class="table-header">Revision History</th>
                   </tr>
                </thead>
                <tbody class="revision">
                   <tr>
-                     <td class="tabularHeadText">Revision</td>
-                     <td class="tabularHeadText">Date</td>
+                     <td class="table-head">Revision</td>
+                     <td class="table-head">Date</td>
                   </tr>
                   <xsl:apply-templates select="revision"/>
                </tbody>
@@ -1147,12 +1147,12 @@
 
    <xsl:template match="revision">
       <tr>
-         <td class="tabularBodyText"><xsl:apply-templates select="revnumber"/></td>
-         <td class="tabularBodyText"><xsl:apply-templates select="revdate"/></td>
+         <td class="table-cell"><xsl:apply-templates select="revnumber"/></td>
+         <td class="table-cell"><xsl:apply-templates select="revdate"/></td>
       </tr>
       <tr>
-         <td class="tabularBodyText"><xsl:text> </xsl:text></td>
-         <td class="tabularBodyText"><xsl:apply-templates select="revremark"/></td>
+         <td class="table-cell"><xsl:text> </xsl:text></td>
+         <td class="table-cell"><xsl:apply-templates select="revremark"/></td>
       </tr>
    </xsl:template>
 
