@@ -88,10 +88,8 @@
                <xsl:apply-templates select="//db:para/db:footnote" mode="endnotes"/>
                <xsl:apply-templates select="db:bibliography"/>
                <footer>
-                  <hr/>
-                  <div align="right" class="blockLabel"><a class="link" href="#top">return to Top</a></div>
                   <br/>
-                  <div class="blockx">
+                  <p class="blockx">
                      <xsl:choose>
                         <xsl:when test="//db:info/db:copyright">
                            <xsl:text>Copyright © </xsl:text><xsl:apply-templates select="//db:info/db:copyright/db:year"/><xsl:text> </xsl:text><xsl:apply-templates select="//db:info/db:copyright/db:holder"/>
@@ -100,7 +98,7 @@
                            <xsl:text>&#160;</xsl:text>
                         </xsl:otherwise>
                      </xsl:choose>
-                  </div>
+                  </p>
                </footer>
             </article> <!-- body -->
             <nav>
