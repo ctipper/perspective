@@ -101,7 +101,7 @@
                <hr/>
             </article>
             <footer>
-               <p class="small">
+               <p class="blockx">
                   <xsl:choose>
                      <xsl:when test="//info/copyright">
                         <xsl:text>Copyright © </xsl:text><xsl:apply-templates select="info/copyright/year"/><xsl:text> </xsl:text><xsl:apply-templates select="info/copyright/owner"/>
@@ -122,7 +122,7 @@
 
    <xsl:template match="info/introduction">
       <div class="abstract">
-         <div class="blockx">
+         <div class="blockText">
             <xsl:choose>
                <xsl:when test="name(child::node())='p'">
                   <xsl:apply-templates select="p" mode="emptypara"/>

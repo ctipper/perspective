@@ -105,7 +105,7 @@
 
    <xsl:template match="db:info/db:abstract">
       <div class="abstract">
-         <div class="blockx">
+         <div class="blockText">
             <xsl:choose>
                <xsl:when test="name(child::node())='para'">
                   <xsl:apply-templates select="db:para" mode="emptypara"/>
