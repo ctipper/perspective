@@ -57,7 +57,7 @@
          <item><p>Output PDF by transforming to formatting-objects with
          <tt>stylesheet/fo-perspective.xsl</tt> and then using the fop renderer</p></item>
       </enumerate>
-      <p class="lead">Notes:</p>
+      <sub-heading>Notes:</sub-heading>
       <p>The supplied Tcl scripts uses xsltproc and trang validator. You may use GNOME libxml to process 
       the pages. See your operating system documentation. Libxml2 is bundled by default  
       on macOS.</p>
@@ -65,11 +65,11 @@
       Installation is somewhat involved see documentation particularly if you need
       non-standard fonts and hyphenation.</p>
       <p>Typical command-lines as follows:</p>
-      <sub-heading>XHTML</sub-heading>
+      <p class="lead">XHTML</p>
       <pre>xsltproc.exe --stringparam file-name e-template 
              --stringparam path-name "" --output ..\site\e-template.html 
 ..\stylesheets\html-perspective.xsl e-template.xml</pre>
-      <sub-heading>PDF</sub-heading>
+      <p class="lead">PDF</p>
       <pre>xsltproc.exe --stringparam file-name e-template 
              --stringparam path-name ../ --stringparam fo-processor fop 
              --output ..\site\pdf\e-template.fo 
@@ -79,7 +79,7 @@
     -pdf ..\site\pdf\e-template.pdf</pre>
       <p>The variable <tt>path-name</tt> refers to the path to images/ from the output 
       directory: uses the Unix path syntax i.e. forward slash.</p>
-      <sub-heading>Docbook</sub-heading>
+      <p class="lead">Docbook</p>
       <pre>xsltproc.exe --output ..\docbook\e-template.xml
 ..\stylesheets\dbk-perspective.xsl e-template.xml</pre>
       <sub-heading>LICENSE&mdash;see <q>LICENSE</q></sub-heading>
