@@ -818,8 +818,6 @@
                 font-style="italic"
                 start-indent="15pt"
                 end-indent="15pt"
-                language="en"
-                country="GB"
                 hyphenate="true">
          <xsl:apply-templates/>
       </fo:block>
@@ -835,8 +833,6 @@
                 text-align="center"
                 line-height="{$font.body.height}"
                 space-after="{$font.body.after}"
-                language="en"
-                country="GB"
                 hyphenate="true">
          <xsl:apply-templates/>
       </fo:block>
@@ -854,8 +850,6 @@
                 white-space="pre"
                 margin="3pt"
                 padding="0.5em"
-                language="en"
-                country="GB"
                 hyphenate="true">
 <!--            border="1px solid {$color.counterpoint}"
                 background-color="{$color.theme}"
@@ -1029,8 +1023,6 @@
                 font-size="{$font.heading2.size}"
                 text-align="justify"
                 line-height="{$font.heading2.height}"
-                language="en"
-                country="GB"
                 hyphenate="true"
                 space-after="3pt"
                 page-break-before="always">
@@ -1065,8 +1057,6 @@
                 font-size="{$font.body.size}"
                 text-align="justify"
                 line-height="{$font.body.height}"
-                language="en"
-                country="GB"
                 hyphenate="true"
                 space-after="{$font.body.after}">
          <fo:inline id="{@label}"><xsl:text> </xsl:text></fo:inline>
@@ -1087,8 +1077,6 @@
                 font-size="{$font.body.size}"
                 text-align="justify"
                 line-height="{$font.body.height}"
-                language="en"
-                country="GB"
                 hyphenate="true"
                 space-after="{$font.body.after}">
          <fo:inline id="{@label}"><xsl:text> </xsl:text></fo:inline>
