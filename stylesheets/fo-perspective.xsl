@@ -39,8 +39,6 @@
    <!-- FO specific parameters -->
    <!-- =============================================================== -->
 
-   <xsl:param name="fo-processor">xep</xsl:param>           <!-- XEP or FOP output -->
-
    <xsl:param name="body.width">16</xsl:param>              <!-- units are cm -->
 
    <xsl:param name="color.top">#BBE4FF</xsl:param>          <!-- Light Blue -->
@@ -101,10 +99,6 @@
 
    <xsl:template name="fo-out">
       <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" language="en" country="GB">
-         <xsl:if test="$fo-processor='xep'">
-            <xsl:call-template name="meta-info"/>
-         </xsl:if>
-         
          <fo:layout-master-set>
             <fo:simple-page-master master-name="first-page"
                                    page-height="29.7cm" 
@@ -234,9 +228,10 @@
             </fo:static-content>
 
             <!-- =============================================================== -->
-            <!-- xep 4.3 build 20050415 does not support page=last -->
-            <!-- To embed copyright notice in footer uncomment following -->
-            <!-- apply-templates and remove copyright from document template -->
+            <!-- FOP 2.7 does not support page=last for a document with even     -->
+            <!-- number of pages. To embed copyright notice in footer uncomment  -->
+            <!-- following `apply-templates` and remove copyright from document  -->
+            <!-- template, see https://issues.apache.org/jira/browse/FOP-2833    -->
             <!-- =============================================================== -->
 
             <fo:static-content flow-name="last-footer">
@@ -285,31 +280,6 @@
          </fo:page-sequence>
 
       </fo:root>
-   </xsl:template>
-
-   <xsl:template name="meta-info">
-      <rx:meta-info xmlns:rx="http://www.renderx.com/XSL/Extensions">
-         <xsl:element name="rx:meta-field">
-            <xsl:attribute name="name">author</xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="//info/author"/></xsl:attribute>
-         </xsl:element>
-         <xsl:element name="rx:meta-field">
-            <xsl:attribute name="name">creator</xsl:attribute>
-            <xsl:attribute name="value">perspective XSL Stylesheets V2.1</xsl:attribute>
-         </xsl:element>
-         <xsl:element name="rx:meta-field">
-            <xsl:attribute name="name">title</xsl:attribute>
-            <xsl:attribute name="value"><xsl:apply-templates select="//info/title" mode="meta-info"/></xsl:attribute>
-         </xsl:element>
-         <xsl:element name="rx:meta-field">
-            <xsl:attribute name="name">subject</xsl:attribute>
-            <xsl:attribute name="value"><xsl:apply-templates select="//info/subtitle" mode="meta-info"/></xsl:attribute>
-         </xsl:element>
-         <xsl:element name="rx:meta-field">
-            <xsl:attribute name="name">keywords</xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="//info/keywords"/></xsl:attribute>
-         </xsl:element>
-      </rx:meta-info>
    </xsl:template>
 
    <!-- =============================================================== -->
@@ -1392,30 +1362,16 @@
       <xsl:choose>
          <xsl:when test="contains(string($pdfres),'svg')">
             <xsl:element name="fo:external-graphic">
-               <xsl:if test="$fo-processor='fop'">
-                  <xsl:attribute name="src">url(<xsl:value-of select="$path-name"/><xsl:value-of select="$image-folder"/>svg/<xsl:value-of select="$image"/>.svg)</xsl:attribute>
-                  <xsl:attribute name="content-width"><xsl:value-of select="format-number(@width * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
-                  <xsl:attribute name="content-height"><xsl:value-of select="format-number(@height * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
-               </xsl:if>
-               <xsl:if test="$fo-processor='xep'">
-                  <xsl:attribute name="src">url(<xsl:value-of select="$path-name"/><xsl:value-of select="$image-folder"/>svg/<xsl:value-of select="$image"/>.svg)</xsl:attribute>
-                  <xsl:attribute name="content-width"><xsl:value-of select="format-number(@width * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
-                  <xsl:attribute name="content-height"><xsl:value-of select="format-number(@height * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
-               </xsl:if>
+               <xsl:attribute name="src">url(<xsl:value-of select="$path-name"/><xsl:value-of select="$image-folder"/>svg/<xsl:value-of select="$image"/>.svg)</xsl:attribute>
+               <xsl:attribute name="content-width"><xsl:value-of select="format-number(@width * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
+               <xsl:attribute name="content-height"><xsl:value-of select="format-number(@height * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
             </xsl:element>
          </xsl:when>
          <xsl:otherwise>
             <xsl:element name="fo:external-graphic">
-               <xsl:if test="$fo-processor='fop'">
-                  <xsl:attribute name="src">url(<xsl:value-of select="$path-name"/><xsl:value-of select="$image-folder"/><xsl:if test="number($pdfres)"><xsl:value-of select="$pdfres"/>dpi/</xsl:if><xsl:value-of select="$image"/>.<xsl:value-of select="$extension" />)</xsl:attribute>
-                  <xsl:attribute name="content-width"><xsl:value-of select="format-number(@width * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
-                  <xsl:attribute name="content-height"><xsl:value-of select="format-number(@height * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
-               </xsl:if>
-               <xsl:if test="$fo-processor='xep'">
-                  <xsl:attribute name="src">url(<xsl:value-of select="$path-name"/><xsl:value-of select="$image-folder"/><xsl:if test="number($pdfres)"><xsl:value-of select="$pdfres"/>dpi/</xsl:if><xsl:value-of select="$image"/>.<xsl:value-of select="$extension" />)</xsl:attribute>
-                  <xsl:attribute name="content-width"><xsl:value-of select="format-number(@width * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
-                  <xsl:attribute name="content-height"><xsl:value-of select="format-number(@height * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
-               </xsl:if>
+               <xsl:attribute name="src">url(<xsl:value-of select="$path-name"/><xsl:value-of select="$image-folder"/><xsl:if test="number($pdfres)"><xsl:value-of select="$pdfres"/>dpi/</xsl:if><xsl:value-of select="$image"/>.<xsl:value-of select="$extension" />)</xsl:attribute>
+               <xsl:attribute name="content-width"><xsl:value-of select="format-number(@width * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
+               <xsl:attribute name="content-height"><xsl:value-of select="format-number(@height * (2.54 div $resolution),'0.000')"/>cm</xsl:attribute>
             </xsl:element>
          </xsl:otherwise>
       </xsl:choose>
@@ -1613,130 +1569,63 @@
          <xsl:when test="@align='center'">
             <xsl:variable name="table_width"><xsl:apply-templates select="descendant::tgroup/columns" mode="sum"/></xsl:variable>
             <xsl:variable name="actual_width"><xsl:value-of select="format-number(number($table_width) * (2.54 div $resolution),'0.000')"/></xsl:variable>
-            <xsl:choose>
-               <xsl:when test="$fo-processor='xep'">
-                  <xsl:element name="fo:block-container">
-                     <xsl:attribute name="width"><xsl:value-of select="$actual_width"/>cm</xsl:attribute>
-                     <xsl:attribute name="start-indent"><xsl:value-of select="format-number((number($body.width) - number($actual_width)) div 2,'0.000')"/>cm</xsl:attribute>
-                     <xsl:attribute name="margin">3pt 10pt</xsl:attribute>  <!-- padding -->
-                     <xsl:choose>
-                        <xsl:when test="//table/label">
-                           <xsl:element name="fo:table-and-caption">
-                              <xsl:attribute name="keep-together">always</xsl:attribute>
-                              <xsl:attribute name="start-indent">0cm</xsl:attribute>
-                              <xsl:call-template name="table-caption"/>
-                              <xsl:call-template name="table-no-caption"/>
-                           </xsl:element>
-                        </xsl:when>
-                        <xsl:when test="not(//table/label)">
-                           <xsl:call-template name="table-no-caption"/>
-                        </xsl:when>
-                     </xsl:choose>
-                  </xsl:element>
-               </xsl:when>
-               <xsl:when test="$fo-processor='fop'">
-                  <xsl:element name="fo:block-container">
-                     <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
-                     <fo:table table-layout="fixed">
-                        <fo:table-column column-width="proportional-column-width(1)"/>
-                        <fo:table-column column-width="proportional-column-width(4)" />
-                        <fo:table-column column-width="proportional-column-width(1)"/>
-                        <fo:table-body>
-                           <fo:table-row>
-                              <fo:table-cell>
-                                 <fo:block><xsl:text> </xsl:text></fo:block>
-                              </fo:table-cell>
-                              <fo:table-cell>
-                                 <xsl:choose>
-                                    <xsl:when test="//table/label">
-                                       <xsl:apply-templates select="label"/>
-                                       <xsl:call-template name="table-no-caption"/>
-                                    </xsl:when>
-                                    <xsl:when test="not(//table/label)">
-                                       <xsl:call-template name="table-no-caption"/>
-                                    </xsl:when>
-                                 </xsl:choose>
-                              </fo:table-cell>
-                              <fo:table-cell>
-                                 <fo:block><xsl:text> </xsl:text></fo:block>
-                              </fo:table-cell>
-                           </fo:table-row>
-                        </fo:table-body>
-                     </fo:table>
-                  </xsl:element>
-               </xsl:when>
-            </xsl:choose>
+            <xsl:element name="fo:block-container">
+               <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
+               <fo:table table-layout="fixed">
+                  <fo:table-column column-width="proportional-column-width(1)"/>
+                  <fo:table-column column-width="proportional-column-width(4)" />
+                  <fo:table-column column-width="proportional-column-width(1)"/>
+                  <fo:table-body>
+                     <fo:table-row>
+                        <fo:table-cell>
+                           <fo:block><xsl:text> </xsl:text></fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell>
+                           <xsl:choose>
+                              <xsl:when test="//table/label">
+                                 <xsl:apply-templates select="label"/>
+                                 <xsl:call-template name="table-no-caption"/>
+                              </xsl:when>
+                              <xsl:when test="not(//table/label)">
+                                 <xsl:call-template name="table-no-caption"/>
+                              </xsl:when>
+                           </xsl:choose>
+                        </fo:table-cell>
+                        <fo:table-cell>
+                           <fo:block><xsl:text> </xsl:text></fo:block>
+                        </fo:table-cell>
+                     </fo:table-row>
+                  </fo:table-body>
+               </fo:table>
+            </xsl:element>
          </xsl:when>
          <xsl:when test="@align=false()">
             <xsl:element name="fo:block-container">
                <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
                <xsl:choose>
-                  <xsl:when test="$fo-processor='xep'">
-                     <xsl:choose>
-                        <xsl:when test="//table/label">
-                           <xsl:element name="fo:table-and-caption">
-                              <xsl:attribute name="keep-together">always</xsl:attribute>
-                              <xsl:call-template name="table-caption"/>
-                              <xsl:call-template name="table-no-caption"/>
-                           </xsl:element>
-                        </xsl:when>
-                        <xsl:when test="not(//table/label)">
-                           <xsl:call-template name="table-no-caption"/>
-                        </xsl:when>
-                     </xsl:choose>
+                  <xsl:when test="//table/label">
+                     <xsl:apply-templates select="label"/>
+                     <xsl:call-template name="table-no-caption"/>
                   </xsl:when>
-                  <xsl:when test="$fo-processor='fop'">
-                     <xsl:choose>
-                        <xsl:when test="//table/label">
-                           <xsl:apply-templates select="label"/>
-                           <xsl:call-template name="table-no-caption"/>
-                        </xsl:when>
-                        <xsl:when test="not(//table/label)">
-                           <xsl:call-template name="table-no-caption"/>
-                        </xsl:when>
-                     </xsl:choose>
+                  <xsl:when test="not(//table/label)">
+                     <xsl:call-template name="table-no-caption"/>
                   </xsl:when>
                </xsl:choose>
             </xsl:element>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:choose>
-               <xsl:when test="$fo-processor='xep'">
-                  <xsl:element name="fo:float">
-                     <xsl:attribute name="float"><xsl:value-of select="@align"/></xsl:attribute>
-                     <xsl:attribute name="clear"><xsl:value-of select="@align"/></xsl:attribute>
-                     <xsl:element name="fo:block-container">
-                        <xsl:attribute name="margin">3pt 10pt</xsl:attribute>   <!-- padding -->
-                        <xsl:choose>
-                           <xsl:when test="//table/label">
-                              <xsl:element name="fo:table-and-caption">
-                                 <xsl:attribute name="keep-together">always</xsl:attribute>
-                                 <xsl:call-template name="table-caption"/>
-                                 <xsl:call-template name="table-no-caption"/>
-                              </xsl:element>
-                           </xsl:when>
-                           <xsl:when test="not(//table/label)">
-                              <xsl:call-template name="table-no-caption"/>
-                           </xsl:when>
-                        </xsl:choose>
-                     </xsl:element>
-                  </xsl:element>
-               </xsl:when>
-               <xsl:when test="$fo-processor='fop'">
-                  <xsl:element name="fo:block-container">
-                     <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
-                     <xsl:choose>
-                        <xsl:when test="//table/label">
-                           <xsl:apply-templates select="label"/>
-                           <xsl:call-template name="table-no-caption"/>
-                        </xsl:when>
-                        <xsl:when test="not(//table/label)">
-                           <xsl:call-template name="table-no-caption"/>
-                        </xsl:when>
-                     </xsl:choose>
-                  </xsl:element>
-               </xsl:when>
-            </xsl:choose>
+            <xsl:element name="fo:block-container">
+               <xsl:attribute name="margin">6pt 0pt</xsl:attribute>   <!-- padding -->
+               <xsl:choose>
+                  <xsl:when test="//table/label">
+                     <xsl:apply-templates select="label"/>
+                     <xsl:call-template name="table-no-caption"/>
+                  </xsl:when>
+                  <xsl:when test="not(//table/label)">
+                     <xsl:call-template name="table-no-caption"/>
+                  </xsl:when>
+               </xsl:choose>
+            </xsl:element>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
