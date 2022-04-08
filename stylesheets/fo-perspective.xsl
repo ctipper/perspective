@@ -80,10 +80,10 @@
    <xsl:param name="font.heading3.height">120%</xsl:param>
    <xsl:param name="font.heading3.before">6pt</xsl:param>
    <xsl:param name="font.heading3.after">3pt</xsl:param>
-   <xsl:param name="font.dropcap.size">36pt</xsl:param>
-   <xsl:param name="font.dropcap.height">26pt</xsl:param>
+   <xsl:param name="font.dropcap.size">35pt</xsl:param>
+   <xsl:param name="font.dropcap.height">0.9em</xsl:param>
    <xsl:param name="font.dropcap.altitude">28pt</xsl:param>
-   <xsl:param name="font.dropcap.depth">0pt</xsl:param>
+   <xsl:param name="font.dropcap.depth">0</xsl:param>
 
    <!-- =============================================================== -->
    <!-- match root element -->
