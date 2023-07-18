@@ -83,7 +83,6 @@ proc XsltFO {stylesheet pathname renderer} {
     if [catch {exec xsltproc --stringparam file-name $filename \
                    --stringparam path-name $pathname \
                    --stringparam fo-processor $renderer \
-                   --stringparam dropped-caps no \
                    --output ../site/pdf/$filename.fo \
                    ../stylesheets/$stylesheet.xsl ../xml/[urlEncode $filename].xml} result] {
         puts stdout $result

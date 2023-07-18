@@ -140,7 +140,6 @@ proc XsltFO {pathname renderer} {
     if [catch {exec xsltproc --stringparam file-name $thisdoc \
                    --stringparam path-name $pathname \
                    --stringparam fo-processor $renderer \
-                   --stringparam dropped-caps no \
                    --output [file join ../site/pdf $thisdoc.fo] \
                    ../stylesheets/fo-perspective.xsl [file join ../xml $thisdoc.xml]} result] {
         $log insert end $result\n
