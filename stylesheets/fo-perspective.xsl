@@ -572,6 +572,7 @@
          <xsl:attribute name="space-after"><xsl:value-of select="$font.body.after"/></xsl:attribute>
          <xsl:attribute name="line-height-shift-adjustment">disregard-shifts</xsl:attribute>
          <xsl:attribute name="intrusion-displace">line</xsl:attribute>
+         <xsl:attribute name="line-stacking-strategy">font-height</xsl:attribute>
          <xsl:choose>
             <xsl:when test="$dropped-caps='yes'">
                <xsl:choose>
